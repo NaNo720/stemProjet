@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Module>
+<ModulePrefs
+title="ElectrolysisofWaterVirtualLabv4"
+author="Juan Borrero Mendoze; Leow Guan Sin; Loo Kang Wee"
+description=""
+screenshot="./ElectrolysisofWaterVirtualLab/Screen Shot 2018-11-13 at 9.23.21 AM (2).png"
+thumbnail="./ElectrolysisofWaterVirtualLab/Screen Shot 2018-11-13 at 9.23.21 AM (2).png">
+<Require feature="opensocial-0.9"/>
+<Require feature="dynamic-height"/>
+</ModulePrefs>
+<Content type="html" href="ElectrolysisofWaterVirtualLabv4_Simulation.xhtml"/>
+</Module>

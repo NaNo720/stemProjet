@@ -1,0 +1,17 @@
+generated-with: Easy Java/Javascript Simulations, version 6.1 BETA, build 201115. Visit http://www.um.es/fem/Ejs
+title: Balancing Chemical Equations
+logo-image: BalancingChemEqns21_ionic/Screenshot 2020-08-18 at 4.49.46 PM (2).png
+author: Zenia Chng; Lawrence Wee
+copyright: 
+author-image: 1authorlookangphoto5050.png;
+source: BalancingChemEqns21_ionic.ejss
+main-script: 
+main-simulation: BalancingChemEqns21_ionic_Simulation.xhtml
+available-languages: 
+html-contents: BalancingChemEqns21_ionic_Contents.xhtml
+html-main: BalancingChemEqns21_ionic.xhtml
+page-title: Balancing Chemical Equations
+page-index: BalancingChemEqns21_ionic_Simulation.xhtml
+resource: assessment.json
+resource: 1authorlookangphoto5050.png
+resource: BalancingChemEqns21_ionic/Screenshot 2020-08-18 at 4.49.46 PM (2).png

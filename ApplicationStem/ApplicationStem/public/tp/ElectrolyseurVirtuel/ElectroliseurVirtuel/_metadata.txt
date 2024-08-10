@@ -1,0 +1,21 @@
+generated-with: Easy Java/Javascript Simulations, version 6.02_BETA, build 201222. Visit https://gitlab.com/ejsS/JavaScriptEditor/release
+title: Electrolysis of Water with Visualisation of ions movement
+logo-image: ElectrolysisofWaterVirtualLab/Screen Shot 2018-11-13 at 9.23.21 AM (2).png
+author: Juan Borrero Mendoze; Leow Guan Sin; Loo Kang Wee
+copyright: 
+preferred-width: 800
+preferred-height: 600
+author-image: ;;
+source: ElectrolysisofWaterVirtualLabv4.ejss
+main-script: 
+main-simulation: ElectrolysisofWaterVirtualLabv4_Simulation.xhtml
+available-languages: 
+html-description: ElectrolysisofWaterVirtualLabv4_Intro_1.html
+html-contents: ElectrolysisofWaterVirtualLabv4_Contents.xhtml
+html-main: ElectrolysisofWaterVirtualLabv4.xhtml
+page-title: Inicio
+page-index: ElectrolysisofWaterVirtualLabv4_Intro_1.html
+page-title: Electrolysis of Water with Visualisation of ions movement
+page-index: ElectrolysisofWaterVirtualLabv4_Simulation.xhtml
+resource: ElectrolysisofWaterVirtualLab/Screen Shot 2018-11-13 at 9.23.21 AM (2).png
+resource: uhuhu.JPG

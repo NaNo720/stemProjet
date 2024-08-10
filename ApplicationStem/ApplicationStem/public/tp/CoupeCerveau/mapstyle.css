@@ -1,0 +1,310 @@
+body{
+    display: flex;
+}
+div{
+    width: 90%;
+}
+
+#taille{
+    width: 50%;
+    justify-content: center;
+}
+
+.taille path.st0{
+    fill: blue;
+    transition: fill 0.3s;
+}
+
+.st0{fill:#F29D83;}
+.st0:hover{
+    cursor: pointer;
+    fill:blue;
+    transition: fill 0.3s;
+}
+
+.st1{fill:#FFE6E3;}
+.st1:hover{
+    cursor: pointer;
+    fill:blue;
+    transition: fill 0.3s;
+}
+.st2{fill:#F2BFBB;}
+.st2:hover{
+    cursor: pointer;
+    fill:blue;
+    transition: fill 0.3s;
+}
+.st3{fill:#FFFFFF;}
+.st3:hover{
+    cursor: pointer;
+    fill:blue;
+    transition: fill 0.3s;
+}
+.st4{fill:#D1B879;}
+.st4:hover{
+    cursor: pointer;
+    fill:blue;
+    transition: fill 0.3s;
+}
+.st5{fill:#CC6750;}
+.st5:hover{
+    cursor: pointer;
+    fill:blue;
+    transition: fill 0.3s;
+}
+.st6{fill:#B28C83;}
+.st6:hover{
+    cursor: pointer;
+    fill:blue;
+    transition: fill 0.3s;
+}
+.st7{fill:#DB65A1;}
+.st7:hover{
+    cursor: pointer;
+    fill:blue;
+    transition: fill 0.3s;
+}
+.st8{fill:#EF8484;}
+.st8:hover{
+    cursor: pointer;
+    fill:blue;
+    transition: fill 0.3s;
+}
+.st9{fill:#EFC184;}
+.st9:hover{
+    cursor: pointer;
+    fill:blue;
+    transition: fill 0.3s;
+}
+
+.toggleElement {
+    
+    width: 250px;
+    margin-top: 2.5%;
+    
+}
+
+.toggleElement1 {
+    
+    width: 25px;
+    margin-top: 2.5%;
+    padding: 25px;
+    
+}
+
+.toggleElement2 {
+    
+    width: 25px;
+    margin-top: 2.5%;
+    padding: 25px;
+    
+}
+
+.toggleElement3 {
+    
+    width: 25px;
+    margin-top: 2.5%;
+    padding: 25px;
+    
+}
+
+.toggleElement4 {
+    
+    width: 25px;
+    margin-top: 2.5%;
+    padding: 25px;
+    
+}
+
+.toggleElement5 {
+    
+    width: 25px;
+    margin-top: 2.5%;
+    padding: 25px;
+    
+}
+
+.toggleElement6 {
+    
+    width: 25px;
+    margin-top: 2.5%;
+    padding: 25px;
+    
+}
+
+.toggleElement7 {
+    
+    width: 25px;
+    margin-top: 2.5%;
+    padding: 25px;
+    
+}
+
+.toggleElement8 {
+    
+    width: 25px;
+    margin-top: 2.5%;
+    padding: 25px;
+    
+}
+
+.toggleElement9 {
+    
+    width: 25px;
+    margin-top: 2.5%;
+    padding: 25px;
+    
+}
+
+.boxe 
+{
+    width: 250px;
+    margin-top: 0%;
+    border: solid ;
+    border-radius: 10px ;
+    display: none;
+}
+
+.boxe1{
+    width: 250px;
+    margin-top: 0%;
+    border: solid ;
+    border-radius: 10px ;
+    display: none;
+}
+
+.boxe2 
+{
+    width: 250px;
+    margin-top: 0%;
+    border: solid ;
+    border-radius: 10px ;
+    display: none;
+}
+
+.boxe3 
+{
+    width: 250px;
+    margin-top: 0%;
+    border: solid ;
+    border-radius: 10px ;
+    display: none;
+}
+
+.boxe4 
+{
+    width: 250px;
+    margin-top: 0%;
+    border: solid ;
+    border-radius: 10px ;
+    display: none;
+}
+
+.boxe5
+{
+    width: 250px;
+    margin-top: 0%;
+    border: solid ;
+    border-radius: 10px ;
+    display: none;
+}
+
+.boxe6 
+{
+    width: 250px;
+    margin-top: 0%;
+    border: solid ;
+    border-radius: 10px ;
+    display: none;
+}
+
+.boxe7 
+{
+    width: 250px;
+    margin-top: 0%;
+    border: solid ;
+    border-radius: 10px ;
+    display: none;
+}
+
+.boxe8 
+{
+    width: 250px;
+    margin-top: 0%;
+    border: solid ;
+    border-radius: 10px ;
+    display: none;
+}
+
+.boxe9
+{
+    width: 250px;
+    margin-top: 0%;
+    border: solid ;
+    border-radius: 10px ;
+    display: none;
+}
+
+img{
+margin: 2%;
+width: 230px;
+height: 200px;
+
+}
+
+.toggleElement p
+{
+    margin: 2%;
+}
+
+.toggleElement1 p{
+    margin: 2%;
+}
+
+.toggleElement2 p{
+    margin: 2%;
+}
+
+.toggleElement3 p{
+    margin: 2%;
+}
+
+.toggleElement4 p{
+    margin: 2%;
+}
+
+.toggleElement5 p{
+    margin: 2%;
+}
+
+.toggleElement6 p{
+    margin: 2%;
+}
+
+.toggleElement7 p{
+    margin: 2%;
+}
+
+.toggleElement8 p{
+    margin: 2%;
+}
+
+.toggleElement9 p{
+    margin: 2%;
+}
+
+
+
+.uil{
+    font-size: 30px;
+    color: #363635;
+    background: none;
+    margin-left: 87.5%;
+    
+}
+
+.leftdiv{
+    display: flex;
+    align-items: center;
+}
+

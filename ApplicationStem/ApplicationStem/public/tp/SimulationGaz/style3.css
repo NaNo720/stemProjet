@@ -1,0 +1,386 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#mainContent{
+	width: 960px;
+	height: 600px;
+	margin: auto;
+	background-color: #D6DBD1;
+	position: relative;
+	border-style: solid;
+	font-family: sans-serif;
+	font-size: 24px;
+}
+
+/********************  CONTAINER  ***********************/
+#container{
+	position: absolute;
+	left: 160px;
+	top: 100px;
+}
+
+.electron{
+	position: absolute;
+	left:230px;
+	top:370px;
+	z-index: 0;
+}
+
+#top{
+	position: absolute;
+	left: 0px;
+	top: -298px;
+	z-index: 1;
+}
+
+#frontC{
+	position: absolute;
+	left: 0;
+	top: 23px;
+	z-index: 3;
+}
+
+#thermometer{
+	position: absolute;
+	left: 20px;
+	top: 200px;
+	z-index: 3;
+}
+
+#redLine{
+	position: absolute;
+	bottom: 10px;
+	left: 4px;
+	width: 7px;
+	height: 90px;
+	background-color: red;
+}
+
+/********************  PUMP  ***********************/
+#pump{
+	position: absolute;
+	left: 590px;
+	top: 370px;
+}
+
+#pumpTop{
+	position: absolute;
+	left: -18px;
+	top: -140px;
+	z-index: 0;
+	opacity: 1;
+}
+
+#pumpBottom{
+	position: absolute;
+	z-index: 1
+}
+
+#noGas{
+	position: absolute;
+	top: -175px;
+	left: 0px;
+	width: 100px;
+	font-size: 24px;
+	text-align: center;
+	display: none;
+}
+
+/********************  MIDDLE PIPES  ***********************/
+#pipes{
+	position: absolute;
+	left: 410px;
+	top: 380px;
+	z-index: 0;
+}
+
+#spinner{
+	position: absolute;
+	left: 33px;
+	top: 0px;
+}
+
+#clickValve{
+	position: absolute;
+	left: 80px;
+	top: 105px;
+}
+
+#lever{
+	position: absolute;
+	left: 5px;
+	top: 53px;
+}
+
+#leverF{
+	position: absolute;
+	top: 53px;
+	left: -47px;
+	display: none;
+}
+
+.valve{
+	position: absolute;
+	top: 0px;
+	left: -23px;
+}
+
+/********************  GAS AREA  ***********************/
+#gasArea{
+	position: absolute;
+	left: 650px;
+	top: 470px;
+	font-size: 14px;
+	color: white;
+}
+
+#gasA, #gasB{
+	position: absolute;
+	left: 65px;
+	top: -45px;
+	width: 170px;
+	height: 55px;
+	text-align: center;
+	/*color : #EF4743;*/
+}
+
+.gasImg, .gasImg-c{
+	position: absolute;
+	top: 0px;
+	left: -10px;
+}
+
+#gasArea p{
+	position: relative;
+	top: 40%;
+	left: 5%;
+	z-index: 2;
+}
+
+#gasB{
+	top: 25px;
+	/*color : #E0BF6C;*/
+}
+
+#gasA.pressed, #gasB.pressed{
+	font-size: 24px;
+}
+
+.demoParticle{
+	position: absolute;
+	top: 35px;
+	left: 150px;
+}
+/********************  TEMP BUTTONS  ***********************/
+#tempButtons{
+	position: absolute;
+	top: 350px;
+	left: 0px;
+	font-size: 25px;
+	padding: 12px;
+	text-decoration: none;
+}
+
+#hot, #cold, #off{
+	position: absolute;
+	padding-top: 7px;
+	text-align: center;
+	width: 75px;
+	height: 30px;
+	border-color: black;
+}
+
+#tempButtons p{
+	position: absolute;
+	top: 5px;
+	left: 25px;
+	text-align: center;
+	width: 65px;
+	z-index: 3;
+}
+
+.buttonT, .buttonT-c{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.buttonT-c{
+	display: none;
+}
+
+#hot{
+}
+
+#cold{
+	top: 60px;
+}
+
+#off{
+	top: 109px;
+}
+
+a:link, a:hover, a:visited{
+	text-decoration: none;
+	color: black;
+
+}
+
+a img { 
+	border:none; 
+}
+
+
+
+/********************  VENT AREA  ***********************/
+#ventArea{
+	position: absolute;
+	bottom: 5px;
+	left: 125px;
+}
+
+.wave{
+	position: absolute;
+	width: 60px;
+	height: 184px;
+	bottom: 5px;
+	left: 20px;
+	z-index: 5;
+	display: none;
+}
+
+.cool{
+
+	background-image: url(img/coldWaves.png);
+	background-repeat: no-repeat;
+}
+
+.heat{
+	background-image: url(img/heatWaves.png);
+	background-repeat: no-repeat;
+}
+
+/********************  MISC  ***********************/
+#text{
+	position: absolute;
+	left: 530px;
+	top: 25px;
+	display: none;
+}
+
+#rmsArea, #keArea{
+	position: absolute;
+	left: 780px;
+	top: 25px;
+	text-align: center;
+	background-color: #83A593;
+	padding: 10px 5px 0px;
+	width: 140px;
+	-moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+	border: solid 2px;
+}
+
+#rmsArea{
+	top: 155px;
+}
+
+p{
+	padding: 0px;
+	margin: 10px;
+}
+
+h3{
+	padding: 0px;
+	margin: 0 0 5px 0;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+
+#pressureArea{
+	position: absolute;
+	top: 300px;
+	left: 450px;
+	height: 80px;
+	width: 120px;
+	padding: 10px 0px 5px 0px;
+	text-align: center;
+	background-image: url("img/bubbleP.png");
+	background-repeat: no-repeat;
+}
+
+#unlockedBubble, #lockedBubble{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#lockedBubble{
+	display: none;
+}
+
+
+#volumeArea{
+	position: absolute;
+	top: 65px;
+	left: 400px;
+	height: 90px;
+	width: 120px;
+	z-index: 4;
+	padding: 10px 0;
+	text-align: center;
+}
+
+#volumeText{
+	position: absolute;
+	left: 45px;
+}
+
+#up, #down{
+	position: absolute;
+	top: -20px;
+	left: 90px;
+}
+
+#down{
+	top: 35px;
+}
+
+.arrowClicked{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: none;
+}
+
+#temperatureArea{
+	margin: 0;
+	padding: 0;
+	position: relative;
+	top: 260px;
+	left: 35px;
+	height: 90px;
+	width: 140px;
+	z-index: 4;
+	padding: 10px 0;
+	text-align: center;
+	background-image: url("img/bubbleT.png");
+	background-repeat: no-repeat;
+}
+
+.lockPressed{
+	opacity: .5;
+}
+
+#vLock .lock, #vLock .unlock{
+	position: absolute;
+	top: -15px;
+	left: -20px;
+}
+
+.lock{
+	display: none;
+}

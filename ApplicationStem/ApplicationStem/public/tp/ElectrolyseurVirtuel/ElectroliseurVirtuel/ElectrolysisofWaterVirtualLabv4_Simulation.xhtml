@@ -1,0 +1,2266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <title>Electrolysis of Water with Visualisation of ions movement</title>
+<script async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-3326007-19"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-3326007-19');
+</script>
+<script data-ad-client="ca-pub-0121577198857509" async="true" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>    <link rel="stylesheet"  type="text/css" href="_ejs_library/css/ejss.css" />
+    <script src="_ejs_library/scripts/common_script.js"></script>
+    <script src="_ejs_library/scripts/textresizedetector.js"></script>
+    <script src="_ejs_library/ejsS.v1.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+/* _inputParameters: an object with different values for the model parameters */
+function ElectrolysisofWaterVirtualLabv4(_topFrame,_libraryPath,_codebasePath, _inputParameters) {
+  var _model = EJSS_CORE.createAnimationLMS();
+  var _view;
+  var _isPlaying = false;
+  var _isPaused = true;
+  var _isMobile = (navigator===undefined) ? false : navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i);
+
+var _stringProperties = {};
+  var _tools = {
+    showInputDialog : EJSS_INTERFACE.BoxPanel.showInputDialog,
+    showOkDialog : EJSS_INTERFACE.BoxPanel.showOkDialog,
+    showOkCancelDialog : EJSS_INTERFACE.BoxPanel.showOkCancelDialog,
+    downloadText: EJSS_TOOLS.File.downloadText,
+    uploadText: function(action) { EJSS_TOOLS.File.uploadText(_model,action); } 
+  };
+
+  function _play()  { _isPaused = false; _isPlaying = true;  _model.play();  }
+  function _pause() { _isPaused = true;  _isPlaying = false; _model.pause(); }
+  function _step()  { _pause();  _model.step(); }
+  function _reset() { _model.reset();  _isPaused = _model.isPaused(); _isPlaying = _model.isPlaying(); }
+  _model._play  = _play;
+  _model._pause = _pause;
+  _model._step  = _step;
+  _model._reset = _reset;
+  function _update() { _model.update(); }
+  function _initialize() { _model.initialize(); }
+  function _setFPS(_fps) { _model.setFPS(_fps); }
+  function _setDelay(_delay) { _model.setDelay(_delay); }
+  function _setStepsPerDisplay(_spd) { _model.setStepsPerDisplay(_spd); }
+  function _setUpdateView(_updateView) { _model.setUpdateView(_updateView); }
+  function _setAutoplay(_auto) { _model.setAutoplay(_auto); }
+  function _println(_message) { console.log(_message); }
+
+  function _breakAfterThisPage() { _model.setShouldBreak(true); }
+
+  function _resetSolvers() { if (_model.resetSolvers) _model.resetSolvers(); }
+
+  function _saveText(name,type,content) { if (_model.saveText) _model.saveText(name,type,content); }
+
+  function _saveState(name) { if (_model.saveState) _model.saveState(name); }
+
+  function _saveImage(name,panelname) { if (_model.saveImage) _model.saveImage(name,panelname); }
+
+  function _readState(url,type) { if (_model.readState) _model.readState(url,type); }
+
+  function _readText(url,type,varname) { if (_model.readText) _model.readText(url,type,varname); }
+
+  function _getStringProperty(propertyName) {
+    var _value = _stringProperties[propertyName];
+    if (_value===undefined) return propertyName;
+    else return _value;
+  }
+  var __pagesEnabled = [];
+  function _setPageEnabled(pageName,enabled) { __pagesEnabled[pageName] = enabled; }
+
+  var I; // EjsS Model.Variables.Tabla Variables.I
+  var t; // EjsS Model.Variables.Tabla Variables.t
+  var dt; // EjsS Model.Variables.Tabla Variables.dt
+  var Cp; // EjsS Model.Variables.Tabla Variables.Cp
+  var m; // EjsS Model.Variables.Tabla Variables.m
+  var Ncell; // EjsS Model.Variables.Tabla Variables.Ncell
+  var T; // EjsS Model.Variables.Tabla Variables.T
+  var Pr; // EjsS Model.Variables.Tabla Variables.Pr
+  var Nfa; // EjsS Model.Variables.Tabla Variables.Nfa
+  var R; // EjsS Model.Variables.Tabla Variables.R
+  var Ca; // EjsS Model.Variables.Tabla Variables.Ca
+  var ph; // EjsS Model.Variables.Tabla Variables.ph
+  var Vh; // EjsS Model.Variables.Tabla Variables.Vh
+  var valvle; // EjsS Model.Variables.Tabla Variables.valvle
+  var CaPlot; // EjsS Model.Variables.Tabla Variables.CaPlot
+
+  var font; // EjsS Model.Variables.lookang.font
+  var cathodeX; // EjsS Model.Variables.lookang.cathodeX
+  var cathodeY; // EjsS Model.Variables.lookang.cathodeY
+  var cathodeSizeX; // EjsS Model.Variables.lookang.cathodeSizeX
+  var cathodeSizeY; // EjsS Model.Variables.lookang.cathodeSizeY
+  var anodeX; // EjsS Model.Variables.lookang.anodeX
+  var anodeY; // EjsS Model.Variables.lookang.anodeY
+  var anodeSizeX; // EjsS Model.Variables.lookang.anodeSizeX
+  var anodeSizeY; // EjsS Model.Variables.lookang.anodeSizeY
+  var nparticles; // EjsS Model.Variables.lookang.nparticles
+  var particleX; // EjsS Model.Variables.lookang.particleX
+  var particleY; // EjsS Model.Variables.lookang.particleY
+  var particleVX; // EjsS Model.Variables.lookang.particleVX
+  var particleVY; // EjsS Model.Variables.lookang.particleVY
+  var activationDelay; // EjsS Model.Variables.lookang.activationDelay
+  var currentActivationIndex; // EjsS Model.Variables.lookang.currentActivationIndex
+  var activationCounter; // EjsS Model.Variables.lookang.activationCounter
+  var varianceFactor; // EjsS Model.Variables.lookang.varianceFactor
+  var showElectron; // EjsS Model.Variables.lookang.showElectron
+
+  var intensity; // EjsS Model.Variables.Bubble.intensity
+  var intensity2; // EjsS Model.Variables.Bubble.intensity2
+  var ntotal; // EjsS Model.Variables.Bubble.ntotal
+  var index; // EjsS Model.Variables.Bubble.index
+  var dy; // EjsS Model.Variables.Bubble.dy
+  var dy1; // EjsS Model.Variables.Bubble.dy1
+  var count; // EjsS Model.Variables.Bubble.count
+  var count1; // EjsS Model.Variables.Bubble.count1
+  var ybubble; // EjsS Model.Variables.Bubble.ybubble
+  var xbubble; // EjsS Model.Variables.Bubble.xbubble
+  var r; // EjsS Model.Variables.Bubble.r
+  var r1; // EjsS Model.Variables.Bubble.r1
+  var dr; // EjsS Model.Variables.Bubble.dr
+  var dr1; // EjsS Model.Variables.Bubble.dr1
+  var ybubbleshow; // EjsS Model.Variables.Bubble.ybubbleshow
+  var bubbleburst; // EjsS Model.Variables.Bubble.bubbleburst
+  var y1bubble; // EjsS Model.Variables.Bubble.y1bubble
+  var x1bubble; // EjsS Model.Variables.Bubble.x1bubble
+  var y1bubbleshow; // EjsS Model.Variables.Bubble.y1bubbleshow
+
+  var Nteocel; // EjsS Model.Variables.Tabla Variables 2.Nteocel
+  var Prd; // EjsS Model.Variables.Tabla Variables 2.Prd
+  var Tserv; // EjsS Model.Variables.Tabla Variables 2.Tserv
+  var w; // EjsS Model.Variables.Tabla Variables 2.w
+  var tciclo; // EjsS Model.Variables.Tabla Variables 2.tciclo
+  var x; // EjsS Model.Variables.Tabla Variables 2.x
+  var level; // EjsS Model.Variables.Tabla Variables 2.level
+  var aux; // EjsS Model.Variables.Tabla Variables 2.aux
+  var Pmodif; // EjsS Model.Variables.Tabla Variables 2.Pmodif
+  var Pot; // EjsS Model.Variables.Tabla Variables 2.Pot
+  var CaOx; // EjsS Model.Variables.Tabla Variables 2.CaOx
+  var color1; // EjsS Model.Variables.Tabla Variables 2.color1
+  var color2; // EjsS Model.Variables.Tabla Variables 2.color2
+  var color3; // EjsS Model.Variables.Tabla Variables 2.color3
+  var z; // EjsS Model.Variables.Tabla Variables 2.z
+
+  var _privateOdesList;
+  var _ODEi_evolution1;
+  var userEvents1=[];
+  var _ODEi_evolution2;
+  var userEvents2=[];
+
+  _model.getOdes = function() { return [_ODEi_evolution1,_ODEi_evolution2]; };
+
+  _model.removeEvents = function(){
+    userEvents1=[];
+    userEvents2=[];
+  };
+
+  function _serialize() { return _model.serialize(); }
+
+  _model._userSerialize = function() {
+    return {
+      I : I,
+      t : t,
+      dt : dt,
+      Cp : Cp,
+      m : m,
+      Ncell : Ncell,
+      T : T,
+      Pr : Pr,
+      Nfa : Nfa,
+      R : R,
+      Ca : Ca,
+      ph : ph,
+      Vh : Vh,
+      valvle : valvle,
+      CaPlot : CaPlot,
+      font : font,
+      cathodeX : cathodeX,
+      cathodeY : cathodeY,
+      cathodeSizeX : cathodeSizeX,
+      cathodeSizeY : cathodeSizeY,
+      anodeX : anodeX,
+      anodeY : anodeY,
+      anodeSizeX : anodeSizeX,
+      anodeSizeY : anodeSizeY,
+      nparticles : nparticles,
+      particleX : particleX,
+      particleY : particleY,
+      particleVX : particleVX,
+      particleVY : particleVY,
+      activationDelay : activationDelay,
+      currentActivationIndex : currentActivationIndex,
+      activationCounter : activationCounter,
+      varianceFactor : varianceFactor,
+      showElectron : showElectron,
+      intensity : intensity,
+      intensity2 : intensity2,
+      ntotal : ntotal,
+      index : index,
+      dy : dy,
+      dy1 : dy1,
+      count : count,
+      count1 : count1,
+      ybubble : ybubble,
+      xbubble : xbubble,
+      r : r,
+      r1 : r1,
+      dr : dr,
+      dr1 : dr1,
+      ybubbleshow : ybubbleshow,
+      bubbleburst : bubbleburst,
+      y1bubble : y1bubble,
+      x1bubble : x1bubble,
+      y1bubbleshow : y1bubbleshow,
+      Nteocel : Nteocel,
+      Prd : Prd,
+      Tserv : Tserv,
+      w : w,
+      tciclo : tciclo,
+      x : x,
+      level : level,
+      aux : aux,
+      Pmodif : Pmodif,
+      Pot : Pot,
+      CaOx : CaOx,
+      color1 : color1,
+      color2 : color2,
+      color3 : color3,
+      z : z
+    };
+  };
+
+  function _serializePublic() { return _model.serializePublic(); }
+
+  _model._userSerializePublic = function() {
+    return {
+      I : I,
+      t : t,
+      dt : dt,
+      Cp : Cp,
+      m : m,
+      Ncell : Ncell,
+      T : T,
+      Pr : Pr,
+      Nfa : Nfa,
+      R : R,
+      Ca : Ca,
+      ph : ph,
+      Vh : Vh,
+      valvle : valvle,
+      CaPlot : CaPlot,
+      font : font,
+      cathodeX : cathodeX,
+      cathodeY : cathodeY,
+      cathodeSizeX : cathodeSizeX,
+      cathodeSizeY : cathodeSizeY,
+      anodeX : anodeX,
+      anodeY : anodeY,
+      anodeSizeX : anodeSizeX,
+      anodeSizeY : anodeSizeY,
+      nparticles : nparticles,
+      particleX : particleX,
+      particleY : particleY,
+      particleVX : particleVX,
+      particleVY : particleVY,
+      activationDelay : activationDelay,
+      currentActivationIndex : currentActivationIndex,
+      activationCounter : activationCounter,
+      varianceFactor : varianceFactor,
+      showElectron : showElectron,
+      intensity : intensity,
+      intensity2 : intensity2,
+      ntotal : ntotal,
+      index : index,
+      dy : dy,
+      dy1 : dy1,
+      count : count,
+      count1 : count1,
+      ybubble : ybubble,
+      xbubble : xbubble,
+      r : r,
+      r1 : r1,
+      dr : dr,
+      dr1 : dr1,
+      ybubbleshow : ybubbleshow,
+      bubbleburst : bubbleburst,
+      y1bubble : y1bubble,
+      x1bubble : x1bubble,
+      y1bubbleshow : y1bubbleshow,
+      Nteocel : Nteocel,
+      Prd : Prd,
+      Tserv : Tserv,
+      w : w,
+      tciclo : tciclo,
+      x : x,
+      level : level,
+      aux : aux,
+      Pmodif : Pmodif,
+      Pot : Pot,
+      CaOx : CaOx,
+      color1 : color1,
+      color2 : color2,
+      color3 : color3,
+      z : z
+    };
+  };
+
+  _model._readParameters = function(json) {
+    if(typeof json.I != "undefined") I = json.I;
+    if(typeof json.t != "undefined") t = json.t;
+    if(typeof json.dt != "undefined") dt = json.dt;
+    if(typeof json.Cp != "undefined") Cp = json.Cp;
+    if(typeof json.m != "undefined") m = json.m;
+    if(typeof json.Ncell != "undefined") Ncell = json.Ncell;
+    if(typeof json.T != "undefined") T = json.T;
+    if(typeof json.Pr != "undefined") Pr = json.Pr;
+    if(typeof json.Nfa != "undefined") Nfa = json.Nfa;
+    if(typeof json.R != "undefined") R = json.R;
+    if(typeof json.Ca != "undefined") Ca = json.Ca;
+    if(typeof json.ph != "undefined") ph = json.ph;
+    if(typeof json.Vh != "undefined") Vh = json.Vh;
+    if(typeof json.valvle != "undefined") valvle = json.valvle;
+    if(typeof json.CaPlot != "undefined") CaPlot = json.CaPlot;
+    if(typeof json.font != "undefined") font = json.font;
+    if(typeof json.cathodeX != "undefined") cathodeX = json.cathodeX;
+    if(typeof json.cathodeY != "undefined") cathodeY = json.cathodeY;
+    if(typeof json.cathodeSizeX != "undefined") cathodeSizeX = json.cathodeSizeX;
+    if(typeof json.cathodeSizeY != "undefined") cathodeSizeY = json.cathodeSizeY;
+    if(typeof json.anodeX != "undefined") anodeX = json.anodeX;
+    if(typeof json.anodeY != "undefined") anodeY = json.anodeY;
+    if(typeof json.anodeSizeX != "undefined") anodeSizeX = json.anodeSizeX;
+    if(typeof json.anodeSizeY != "undefined") anodeSizeY = json.anodeSizeY;
+    if(typeof json.nparticles != "undefined") nparticles = json.nparticles;
+    if(typeof json.particleX != "undefined") particleX = json.particleX;
+    if(typeof json.particleY != "undefined") particleY = json.particleY;
+    if(typeof json.particleVX != "undefined") particleVX = json.particleVX;
+    if(typeof json.particleVY != "undefined") particleVY = json.particleVY;
+    if(typeof json.activationDelay != "undefined") activationDelay = json.activationDelay;
+    if(typeof json.currentActivationIndex != "undefined") currentActivationIndex = json.currentActivationIndex;
+    if(typeof json.activationCounter != "undefined") activationCounter = json.activationCounter;
+    if(typeof json.varianceFactor != "undefined") varianceFactor = json.varianceFactor;
+    if(typeof json.showElectron != "undefined") showElectron = json.showElectron;
+    if(typeof json.intensity != "undefined") intensity = json.intensity;
+    if(typeof json.intensity2 != "undefined") intensity2 = json.intensity2;
+    if(typeof json.ntotal != "undefined") ntotal = json.ntotal;
+    if(typeof json.index != "undefined") index = json.index;
+    if(typeof json.dy != "undefined") dy = json.dy;
+    if(typeof json.dy1 != "undefined") dy1 = json.dy1;
+    if(typeof json.count != "undefined") count = json.count;
+    if(typeof json.count1 != "undefined") count1 = json.count1;
+    if(typeof json.ybubble != "undefined") ybubble = json.ybubble;
+    if(typeof json.xbubble != "undefined") xbubble = json.xbubble;
+    if(typeof json.r != "undefined") r = json.r;
+    if(typeof json.r1 != "undefined") r1 = json.r1;
+    if(typeof json.dr != "undefined") dr = json.dr;
+    if(typeof json.dr1 != "undefined") dr1 = json.dr1;
+    if(typeof json.ybubbleshow != "undefined") ybubbleshow = json.ybubbleshow;
+    if(typeof json.bubbleburst != "undefined") bubbleburst = json.bubbleburst;
+    if(typeof json.y1bubble != "undefined") y1bubble = json.y1bubble;
+    if(typeof json.x1bubble != "undefined") x1bubble = json.x1bubble;
+    if(typeof json.y1bubbleshow != "undefined") y1bubbleshow = json.y1bubbleshow;
+    if(typeof json.Nteocel != "undefined") Nteocel = json.Nteocel;
+    if(typeof json.Prd != "undefined") Prd = json.Prd;
+    if(typeof json.Tserv != "undefined") Tserv = json.Tserv;
+    if(typeof json.w != "undefined") w = json.w;
+    if(typeof json.tciclo != "undefined") tciclo = json.tciclo;
+    if(typeof json.x != "undefined") x = json.x;
+    if(typeof json.level != "undefined") level = json.level;
+    if(typeof json.aux != "undefined") aux = json.aux;
+    if(typeof json.Pmodif != "undefined") Pmodif = json.Pmodif;
+    if(typeof json.Pot != "undefined") Pot = json.Pot;
+    if(typeof json.CaOx != "undefined") CaOx = json.CaOx;
+    if(typeof json.color1 != "undefined") color1 = json.color1;
+    if(typeof json.color2 != "undefined") color2 = json.color2;
+    if(typeof json.color3 != "undefined") color3 = json.color3;
+    if(typeof json.z != "undefined") z = json.z;
+  };
+
+  _model._readParametersPublic = function(json) {
+    if(typeof json.I != "undefined") I = json.I;
+    if(typeof json.t != "undefined") t = json.t;
+    if(typeof json.dt != "undefined") dt = json.dt;
+    if(typeof json.Cp != "undefined") Cp = json.Cp;
+    if(typeof json.m != "undefined") m = json.m;
+    if(typeof json.Ncell != "undefined") Ncell = json.Ncell;
+    if(typeof json.T != "undefined") T = json.T;
+    if(typeof json.Pr != "undefined") Pr = json.Pr;
+    if(typeof json.Nfa != "undefined") Nfa = json.Nfa;
+    if(typeof json.R != "undefined") R = json.R;
+    if(typeof json.Ca != "undefined") Ca = json.Ca;
+    if(typeof json.ph != "undefined") ph = json.ph;
+    if(typeof json.Vh != "undefined") Vh = json.Vh;
+    if(typeof json.valvle != "undefined") valvle = json.valvle;
+    if(typeof json.CaPlot != "undefined") CaPlot = json.CaPlot;
+    if(typeof json.font != "undefined") font = json.font;
+    if(typeof json.cathodeX != "undefined") cathodeX = json.cathodeX;
+    if(typeof json.cathodeY != "undefined") cathodeY = json.cathodeY;
+    if(typeof json.cathodeSizeX != "undefined") cathodeSizeX = json.cathodeSizeX;
+    if(typeof json.cathodeSizeY != "undefined") cathodeSizeY = json.cathodeSizeY;
+    if(typeof json.anodeX != "undefined") anodeX = json.anodeX;
+    if(typeof json.anodeY != "undefined") anodeY = json.anodeY;
+    if(typeof json.anodeSizeX != "undefined") anodeSizeX = json.anodeSizeX;
+    if(typeof json.anodeSizeY != "undefined") anodeSizeY = json.anodeSizeY;
+    if(typeof json.nparticles != "undefined") nparticles = json.nparticles;
+    if(typeof json.particleX != "undefined") particleX = json.particleX;
+    if(typeof json.particleY != "undefined") particleY = json.particleY;
+    if(typeof json.particleVX != "undefined") particleVX = json.particleVX;
+    if(typeof json.particleVY != "undefined") particleVY = json.particleVY;
+    if(typeof json.activationDelay != "undefined") activationDelay = json.activationDelay;
+    if(typeof json.currentActivationIndex != "undefined") currentActivationIndex = json.currentActivationIndex;
+    if(typeof json.activationCounter != "undefined") activationCounter = json.activationCounter;
+    if(typeof json.varianceFactor != "undefined") varianceFactor = json.varianceFactor;
+    if(typeof json.showElectron != "undefined") showElectron = json.showElectron;
+    if(typeof json.intensity != "undefined") intensity = json.intensity;
+    if(typeof json.intensity2 != "undefined") intensity2 = json.intensity2;
+    if(typeof json.ntotal != "undefined") ntotal = json.ntotal;
+    if(typeof json.index != "undefined") index = json.index;
+    if(typeof json.dy != "undefined") dy = json.dy;
+    if(typeof json.dy1 != "undefined") dy1 = json.dy1;
+    if(typeof json.count != "undefined") count = json.count;
+    if(typeof json.count1 != "undefined") count1 = json.count1;
+    if(typeof json.ybubble != "undefined") ybubble = json.ybubble;
+    if(typeof json.xbubble != "undefined") xbubble = json.xbubble;
+    if(typeof json.r != "undefined") r = json.r;
+    if(typeof json.r1 != "undefined") r1 = json.r1;
+    if(typeof json.dr != "undefined") dr = json.dr;
+    if(typeof json.dr1 != "undefined") dr1 = json.dr1;
+    if(typeof json.ybubbleshow != "undefined") ybubbleshow = json.ybubbleshow;
+    if(typeof json.bubbleburst != "undefined") bubbleburst = json.bubbleburst;
+    if(typeof json.y1bubble != "undefined") y1bubble = json.y1bubble;
+    if(typeof json.x1bubble != "undefined") x1bubble = json.x1bubble;
+    if(typeof json.y1bubbleshow != "undefined") y1bubbleshow = json.y1bubbleshow;
+    if(typeof json.Nteocel != "undefined") Nteocel = json.Nteocel;
+    if(typeof json.Prd != "undefined") Prd = json.Prd;
+    if(typeof json.Tserv != "undefined") Tserv = json.Tserv;
+    if(typeof json.w != "undefined") w = json.w;
+    if(typeof json.tciclo != "undefined") tciclo = json.tciclo;
+    if(typeof json.x != "undefined") x = json.x;
+    if(typeof json.level != "undefined") level = json.level;
+    if(typeof json.aux != "undefined") aux = json.aux;
+    if(typeof json.Pmodif != "undefined") Pmodif = json.Pmodif;
+    if(typeof json.Pot != "undefined") Pot = json.Pot;
+    if(typeof json.CaOx != "undefined") CaOx = json.CaOx;
+    if(typeof json.color1 != "undefined") color1 = json.color1;
+    if(typeof json.color2 != "undefined") color2 = json.color2;
+    if(typeof json.color3 != "undefined") color3 = json.color3;
+    if(typeof json.z != "undefined") z = json.z;
+  };
+
+  function _unserializePublic(json) { return _model.unserializePublic(json); }
+
+  _model._userUnserializePublic = function(json) {
+    _model._readParametersPublic(json);
+   _resetSolvers();
+   _model.update();
+  };
+
+  function _unserialize(json) { return _model.unserialize(json); }
+
+  _model._userUnserialize = function(json) {
+    _model._readParameters(json);
+   _resetSolvers();
+   _model.update();
+  };
+
+  _model.addToReset(function() {
+    __pagesEnabled["Bubble left"] = true;
+    __pagesEnabled["svg"] = true;
+    __pagesEnabled["Evol Page"] = true;
+    __pagesEnabled["Hydrogen tank"] = true;
+    __pagesEnabled["bubbles"] = true;
+    __pagesEnabled["PSA"] = true;
+    __pagesEnabled["Oxygen"] = true;
+    __pagesEnabled["LED"] = true;
+    __pagesEnabled["Water Tank"] = true;
+    __pagesEnabled["RelFijas page"] = true;
+    __pagesEnabled["bubbles"] = true;
+    __pagesEnabled["bubbles 2"] = true;
+    __pagesEnabled["electronstravelleft"] = true;
+  });
+
+  _model.addToReset(function() {
+    I = 1000; // EjsS Model.Variables.Tabla Variables.I
+    t = 0; // EjsS Model.Variables.Tabla Variables.t
+    dt = 0.1; // EjsS Model.Variables.Tabla Variables.dt
+    Cp = 0.715; // EjsS Model.Variables.Tabla Variables.Cp
+    m = 30; // EjsS Model.Variables.Tabla Variables.m
+    Ncell = 15; // EjsS Model.Variables.Tabla Variables.Ncell
+    T = 293; // EjsS Model.Variables.Tabla Variables.T
+    Pr = 0; // EjsS Model.Variables.Tabla Variables.Pr
+    Nfa = 26.81; // EjsS Model.Variables.Tabla Variables.Nfa
+    R = 0.082; // EjsS Model.Variables.Tabla Variables.R
+    Ca = 0; // EjsS Model.Variables.Tabla Variables.Ca
+    ph = 0.0899; // EjsS Model.Variables.Tabla Variables.ph
+    Vh = 0; // EjsS Model.Variables.Tabla Variables.Vh
+    valvle = 0; // EjsS Model.Variables.Tabla Variables.valvle
+    CaPlot = 0; // EjsS Model.Variables.Tabla Variables.CaPlot
+  });
+
+  _model.addToReset(function() {
+    font = "normal normal 2vw"; // EjsS Model.Variables.lookang.font
+    cathodeX = -1.75; // EjsS Model.Variables.lookang.cathodeX
+    cathodeY = 1; // EjsS Model.Variables.lookang.cathodeY
+    cathodeSizeX = 0.5; // EjsS Model.Variables.lookang.cathodeSizeX
+    cathodeSizeY = 3; // EjsS Model.Variables.lookang.cathodeSizeY
+    anodeX = 1.8; // EjsS Model.Variables.lookang.anodeX
+    anodeY = 1; // EjsS Model.Variables.lookang.anodeY
+    anodeSizeX = 0.5; // EjsS Model.Variables.lookang.anodeSizeX
+    anodeSizeY = 3; // EjsS Model.Variables.lookang.anodeSizeY
+    nparticles = 100; // EjsS Model.Variables.lookang.nparticles
+    particleX = new Array(nparticles); // EjsS Model.Variables.lookang.particleX
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<nparticles; _i0+=1) {  // EjsS Model.Variables.lookang.particleX
+        particleX[_i0] = anodeX+Math.random()*anodeSizeX- anodeSizeX / 2;  // EjsS Model.Variables.lookang.particleX
+      }
+    }());
+    particleY = new Array(nparticles); // EjsS Model.Variables.lookang.particleY
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<nparticles; _i0+=1) {  // EjsS Model.Variables.lookang.particleY
+        particleY[_i0] = anodeY+Math.random()*anodeSizeY- anodeSizeY / 2;  // EjsS Model.Variables.lookang.particleY
+      }
+    }());
+    particleVX = new Array(nparticles); // EjsS Model.Variables.lookang.particleVX
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<nparticles; _i0+=1) {  // EjsS Model.Variables.lookang.particleVX
+        particleVX[_i0] = 0;  // EjsS Model.Variables.lookang.particleVX
+      }
+    }());
+    particleVY = new Array(nparticles); // EjsS Model.Variables.lookang.particleVY
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<nparticles; _i0+=1) {  // EjsS Model.Variables.lookang.particleVY
+        particleVY[_i0] = 0;  // EjsS Model.Variables.lookang.particleVY
+      }
+    }());
+    activationDelay = 50; // EjsS Model.Variables.lookang.activationDelay
+    currentActivationIndex = 0; // EjsS Model.Variables.lookang.currentActivationIndex
+    activationCounter = activationDelay; // EjsS Model.Variables.lookang.activationCounter
+    varianceFactor = 0.5; // EjsS Model.Variables.lookang.varianceFactor
+    showElectron = new Array(nparticles); // EjsS Model.Variables.lookang.showElectron
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<nparticles; _i0+=1) {  // EjsS Model.Variables.lookang.showElectron
+        showElectron[_i0] = true;  // EjsS Model.Variables.lookang.showElectron
+      }
+    }());
+  });
+
+  _model.addToReset(function() {
+    intensity = 0.1; // EjsS Model.Variables.Bubble.intensity
+    intensity2 = 0.05; // EjsS Model.Variables.Bubble.intensity2
+    ntotal = 2000; // EjsS Model.Variables.Bubble.ntotal
+    index = new Array(ntotal); // EjsS Model.Variables.Bubble.index
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.index
+        index[_i0] = 0;  // EjsS Model.Variables.Bubble.index
+      }
+    }());
+    dy = new Array(ntotal); // EjsS Model.Variables.Bubble.dy
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.dy
+        dy[_i0] = 0;  // EjsS Model.Variables.Bubble.dy
+      }
+    }());
+    dy1 = new Array(ntotal); // EjsS Model.Variables.Bubble.dy1
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.dy1
+        dy1[_i0] = 0;  // EjsS Model.Variables.Bubble.dy1
+      }
+    }());
+    count = new Array(ntotal); // EjsS Model.Variables.Bubble.count
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.count
+        count[_i0] = 0;  // EjsS Model.Variables.Bubble.count
+      }
+    }());
+    count1 = new Array(ntotal); // EjsS Model.Variables.Bubble.count1
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.count1
+        count1[_i0] = 0;  // EjsS Model.Variables.Bubble.count1
+      }
+    }());
+    ybubble = new Array(ntotal); // EjsS Model.Variables.Bubble.ybubble
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.ybubble
+        ybubble[_i0] = 0;  // EjsS Model.Variables.Bubble.ybubble
+      }
+    }());
+    xbubble = new Array(ntotal); // EjsS Model.Variables.Bubble.xbubble
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.xbubble
+        xbubble[_i0] = 0;  // EjsS Model.Variables.Bubble.xbubble
+      }
+    }());
+    r = new Array(ntotal); // EjsS Model.Variables.Bubble.r
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.r
+        r[_i0] = 0.2;  // EjsS Model.Variables.Bubble.r
+      }
+    }());
+    r1 = new Array(ntotal); // EjsS Model.Variables.Bubble.r1
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.r1
+        r1[_i0] = 0.2;  // EjsS Model.Variables.Bubble.r1
+      }
+    }());
+    dr = new Array(ntotal); // EjsS Model.Variables.Bubble.dr
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.dr
+        dr[_i0] = 0;  // EjsS Model.Variables.Bubble.dr
+      }
+    }());
+    dr1 = new Array(ntotal); // EjsS Model.Variables.Bubble.dr1
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.dr1
+        dr1[_i0] = 0;  // EjsS Model.Variables.Bubble.dr1
+      }
+    }());
+    ybubbleshow = new Array(ntotal); // EjsS Model.Variables.Bubble.ybubbleshow
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.ybubbleshow
+        ybubbleshow[_i0] = true;  // EjsS Model.Variables.Bubble.ybubbleshow
+      }
+    }());
+    bubbleburst = new Array(ntotal); // EjsS Model.Variables.Bubble.bubbleburst
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.bubbleburst
+        bubbleburst[_i0] = false;  // EjsS Model.Variables.Bubble.bubbleburst
+      }
+    }());
+    y1bubble = new Array(ntotal); // EjsS Model.Variables.Bubble.y1bubble
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.y1bubble
+        y1bubble[_i0] = 0;  // EjsS Model.Variables.Bubble.y1bubble
+      }
+    }());
+    x1bubble = new Array(ntotal); // EjsS Model.Variables.Bubble.x1bubble
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.x1bubble
+        x1bubble[_i0] = 0;  // EjsS Model.Variables.Bubble.x1bubble
+      }
+    }());
+    y1bubbleshow = new Array(ntotal); // EjsS Model.Variables.Bubble.y1bubbleshow
+    (function () {
+      var _i0;
+      for (_i0=0; _i0<ntotal; _i0+=1) {  // EjsS Model.Variables.Bubble.y1bubbleshow
+        y1bubbleshow[_i0] = true;  // EjsS Model.Variables.Bubble.y1bubbleshow
+      }
+    }());
+  });
+
+  _model.addToReset(function() {
+    Nteocel = 0; // EjsS Model.Variables.Tabla Variables 2.Nteocel
+    Prd = 5; // EjsS Model.Variables.Tabla Variables 2.Prd
+    Tserv = 353; // EjsS Model.Variables.Tabla Variables 2.Tserv
+    w = 6; // EjsS Model.Variables.Tabla Variables 2.w
+    tciclo = 0; // EjsS Model.Variables.Tabla Variables 2.tciclo
+    x = 0; // EjsS Model.Variables.Tabla Variables 2.x
+    level = 1.05; // EjsS Model.Variables.Tabla Variables 2.level
+    aux = 1; // EjsS Model.Variables.Tabla Variables 2.aux
+    Pmodif = 0; // EjsS Model.Variables.Tabla Variables 2.Pmodif
+    Pot = 0; // EjsS Model.Variables.Tabla Variables 2.Pot
+    CaOx = 0; // EjsS Model.Variables.Tabla Variables 2.CaOx
+    color1 = "green"; // EjsS Model.Variables.Tabla Variables 2.color1
+    color2 = "black"; // EjsS Model.Variables.Tabla Variables 2.color2
+    color3 = "black"; // EjsS Model.Variables.Tabla Variables 2.color3
+    z = 0; // EjsS Model.Variables.Tabla Variables 2.z
+  });
+
+  if (_inputParameters) {
+    _inputParameters = _model.parseInputParameters(_inputParameters);
+    if (_inputParameters) _model.addToReset(function() { _model._readParameters(_inputParameters); });
+  }
+
+  _model.addToReset(function() {
+    _privateOdesList=[];
+    _ODEi_evolution1 = _ODE_evolution1();
+    _privateOdesList.push(_ODEi_evolution1);
+    _ODEi_evolution2 = _ODE_evolution2();
+    _privateOdesList.push(_ODEi_evolution2);
+  });
+
+  _model.addToReset(function() {
+    _model.setAutoplay(false);
+    _model.setPauseOnPageExit(true);
+    _model.setFPS(20);
+    _model.setStepsPerDisplay(1);
+  });
+
+  // code to be copied to EJSS source code under Custom and used in drawingPanel3D and plottingPanel2D  // > CustomCode.Lib Page:1
+  // address the problem is height difference is iOS app , epub, and Firefox  // > CustomCode.Lib Page:2
+  // user need to change only k and kepub  // > CustomCode.Lib Page:3
+  // copy %changeOrientation()% into the Height Field of drawingPanel3D and plottingPanel2D  // > CustomCode.Lib Page:4
+  function changeOrientation() {  // > CustomCode.Lib Page:5
+     // > CustomCode.Lib Page:6
+  var k =0.9 ; // k control height 1 is for full screen, 0.9 shorten etc  // > CustomCode.Lib Page:7
+  var kepub =0.9 ;  // > CustomCode.Lib Page:8
+  // check platform for Apps  // > CustomCode.Lib Page:9
+  try { // allow code to run in Student Learning Space   // > CustomCode.Lib Page:10
+    var iOSapp =  (typeof parent.device != 'undefined' && parent.device.platform == "iOS");  // > CustomCode.Lib Page:11
+    var Androidapp = (typeof parent.device != 'undefined' && parent.device.platform == "Android");  // > CustomCode.Lib Page:12
+  } catch(e) {  // > CustomCode.Lib Page:13
+    var iOSapp = false;  // > CustomCode.Lib Page:14
+    var Androidapp = false;  // > CustomCode.Lib Page:15
+  }  // > CustomCode.Lib Page:16
+  // check platform for web browsers  // > CustomCode.Lib Page:17
+  var iOS =/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;  // > CustomCode.Lib Page:18
+  var iPad =/iPad/.test(navigator.userAgent) && !window.MSStream;  // > CustomCode.Lib Page:19
+  var iPhone = /iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;  // > CustomCode.Lib Page:20
+  var Android= /Android|android/i.test(navigator.userAgent);  // > CustomCode.Lib Page:21
+  //navigator  // > CustomCode.Lib Page:22
+  var Firefox = navigator.userAgent.indexOf("Firefox") != -1;  // > CustomCode.Lib Page:23
+     // > CustomCode.Lib Page:24
+  switch (window.orientation) { // using window.orientation as deciding factor  // > CustomCode.Lib Page:25
+    case 0:  // > CustomCode.Lib Page:26
+    case 180:  // > CustomCode.Lib Page:27
+      this.screenOrientation = 'portrait';  // > CustomCode.Lib Page:28
+      if (iOSapp){ // does not seems to work  // > CustomCode.Lib Page:29
+          // > CustomCode.Lib Page:30
+        return window.screen.height*k;  //0.1 for app and 0.1 for nonfullscreenapp    // > CustomCode.Lib Page:31
+        // > CustomCode.Lib Page:32
+      }  // > CustomCode.Lib Page:33
+      else if (_isEPub){ // does not seems to work  // > CustomCode.Lib Page:34
+        //   return Math.max(window.screen.width,window.screen.height)*0.9;  // > CustomCode.Lib Page:35
+        return window.innerHeight*kepub;  //0.1 for app and 0.1 for nonfullscreenapp    // > CustomCode.Lib Page:36
+        // return window.screen.height;  // > CustomCode.Lib Page:37
+        //  return window.innerHeight;  // > CustomCode.Lib Page:38
+        // return document.documentElement.clientHeight;  // > CustomCode.Lib Page:39
+      }  // > CustomCode.Lib Page:40
+       // > CustomCode.Lib Page:41
+      else {  // > CustomCode.Lib Page:42
+         // > CustomCode.Lib Page:43
+        return 100*k+"vh";  // > CustomCode.Lib Page:44
+      }  // > CustomCode.Lib Page:45
+      break;  // > CustomCode.Lib Page:46
+    case 90:  // > CustomCode.Lib Page:47
+    case -90:  // > CustomCode.Lib Page:48
+      this.screenOrientation = 'landscape';  // > CustomCode.Lib Page:49
+     // > CustomCode.Lib Page:50
+      if (iOSapp){ // App  // > CustomCode.Lib Page:51
+        return window.screen.width*k;    // > CustomCode.Lib Page:52
+        // return window.screen.height;  // > CustomCode.Lib Page:53
+        //  return window.innerHeight;  // > CustomCode.Lib Page:54
+        //  return document.documentElement.clientHeight;  // > CustomCode.Lib Page:55
+      }  // > CustomCode.Lib Page:56
+      else if (_isEPub){ // does not seems to work  // > CustomCode.Lib Page:57
+        //   return Math.max(window.screen.width,window.screen.height)*0.9;  // > CustomCode.Lib Page:58
+        return window.innerHeight*kepub;  //0.1 for app and 0.1 for nonfullscreenapp    // > CustomCode.Lib Page:59
+        // return window.screen.height;  // > CustomCode.Lib Page:60
+        //  return window.innerHeight;  // > CustomCode.Lib Page:61
+        // return document.documentElement.clientHeight;  // > CustomCode.Lib Page:62
+      }  // > CustomCode.Lib Page:63
+       // > CustomCode.Lib Page:64
+      else {  // > CustomCode.Lib Page:65
+        return 100*k+"vh";  // > CustomCode.Lib Page:66
+        }  // > CustomCode.Lib Page:67
+      break;  // > CustomCode.Lib Page:68
+    default:  // > CustomCode.Lib Page:69
+      this.screenOrientation = 'unknown';  // > CustomCode.Lib Page:70
+      //       return (iPad)?""+(window.screen.width+window.screen.height)*0.4:((iPhone)?""+window.screen.width:_view._format(window.innerHeight*0.9,"0"));  // > CustomCode.Lib Page:71
+       if (Firefox){  // > CustomCode.Lib Page:72
+        return window.innerHeight*k;// number as of 20180831 Firefox does not support vh yet so need a separate line to handle  // > CustomCode.Lib Page:73
+        }  // > CustomCode.Lib Page:74
+          // > CustomCode.Lib Page:75
+        else {  // > CustomCode.Lib Page:76
+          return 100*k+"vh"; // string every other solid deployment, Android Android App web chrome etc  // > CustomCode.Lib Page:77
+          //console.log('hello');  // > CustomCode.Lib Page:78
+  }  // > CustomCode.Lib Page:79
+  }  // > CustomCode.Lib Page:80
+     // > CustomCode.Lib Page:81
+  }  // > CustomCode.Lib Page:82
+
+  var lambda = 5; // mean need to be larger than 0 //http://jsfiddle.net/Xotic750/DXXhs/  // > CustomCode.possion:1
+  var k = 0;  // > CustomCode.possion:2
+  var p = 1;  // > CustomCode.possion:3
+  function poisson (lambda) {  // > CustomCode.possion:4
+      var L = Math.exp(-lambda),  // > CustomCode.possion:5
+          k = 0,  // > CustomCode.possion:6
+          p = 1;  // > CustomCode.possion:7
+      do {  // > CustomCode.possion:8
+          k = k + 1;  // > CustomCode.possion:9
+          p = p * Math.random();  // > CustomCode.possion:10
+      } while (p > L);  // > CustomCode.possion:11
+      return k - 1;  // > CustomCode.possion:12
+  }  // > CustomCode.possion:13
+
+  _model.addToInitialization(function() {
+    if (!__pagesEnabled["Bubble left"]) return;
+    for (var i=0; i<ntotal  ; i++) {  // > Initialization.Bubble left:1
+     xbubble[i]=-1.8+(Math.random()-0.5)*0.5;  // > Initialization.Bubble left:2
+     x1bubble[i]=1.8+(Math.random()-0.5)*0.5;  // > Initialization.Bubble left:3
+    // xbubble[i] =poisson();  // > Initialization.Bubble left:4
+     ybubble[i]=(Math.random()*(2));  // > Initialization.Bubble left:5
+     y1bubble[i]=(Math.random()*(2));  // > Initialization.Bubble left:6
+    // ybubble[i] =poisson()*(-3);  // > Initialization.Bubble left:7
+     r[i]=0; //reset radius back to zero size  // > Initialization.Bubble left:8
+     dr[i] =0; // reset radius growth   // > Initialization.Bubble left:9
+     // right  // > Initialization.Bubble left:10
+     r1[i]=0; //reset radius back to zero size  // > Initialization.Bubble left:11
+     dr1[i] =0; // reset radius growth   // > Initialization.Bubble left:12
+     count1[i]=0; //reset counting of bubbles  // > Initialization.Bubble left:13
+     ybubbleshow[i]=true; //show all bubbles  // > Initialization.Bubble left:14
+     y1bubbleshow[i]=true; //show all bubbles  // > Initialization.Bubble left:15
+     index[i]=i+"";  // > Initialization.Bubble left:16
+    }  // > Initialization.Bubble left:17
+    dr[0] = 0.1*intensity;  // > Initialization.Bubble left:18
+    dr1[0] = 0.05*intensity;  // > Initialization.Bubble left:19
+  });
+
+  _model.addToInitialization(function() {
+    if (!__pagesEnabled["svg"]) return;
+    var container = document.createElement('div');  // > Initialization.svg:1
+    var svggradient = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs>'+  // > Initialization.svg:2
+      '  <radialGradient id="mygrandient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">'+  // > Initialization.svg:3
+      '    <stop offset="0%" style="stop-color:rgb(255,255,255); stop-opacity:1" />'+  // > Initialization.svg:4
+      '    <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:0.1" />'+  // > Initialization.svg:5
+      '  </radialGradient>'+  // > Initialization.svg:6
+      '</defs></svg>';  // > Initialization.svg:7
+    container.innerHTML = svggradient;  // > Initialization.svg:8
+    document.body.appendChild(container);  // > Initialization.svg:9
+    //"url(#mygrandient)"  // > Initialization.svg:10
+    var container = document.createElement('div');  // > Initialization.svg:11
+    var svggradient = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs>'+  // > Initialization.svg:12
+      '  <radialGradient id="mygrandient1" cx="50%" cy="50%" r="100%" fx="50%" fy="50%">'+  // > Initialization.svg:13
+      '    <stop offset="0%" style="stop-color:rgb(255,255,255); stop-opacity:0.1" />'+  // > Initialization.svg:14
+      '    <stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:0.5" />'+  // > Initialization.svg:15
+      '  </radialGradient>'+  // > Initialization.svg:16
+      '</defs></svg>';  // > Initialization.svg:17
+    container.innerHTML = svggradient;  // > Initialization.svg:18
+    document.body.appendChild(container);  // > Initialization.svg:19
+    //"url(#mygrandient1)"  // > Initialization.svg:20
+  });
+
+  _model.addToInitialization(function() {
+    _initializeSolvers();
+  });
+
+  _model.addToEvolution(function() {
+    if (!__pagesEnabled["Evol Page"]) return;
+    _ODEi_evolution1.step();
+  });
+
+  _model.addToEvolution(function() {
+    if (!__pagesEnabled["Hydrogen tank"]) return;
+       // > Evolution.Hydrogen tank:1
+    //Restriccion de la temperatura  // > Evolution.Hydrogen tank:2
+    //Restriction of temperature to growth  // > Evolution.Hydrogen tank:3
+    if (T>Tserv) {  // > Evolution.Hydrogen tank:4
+      if (x==0){  // > Evolution.Hydrogen tank:5
+        alert("Ventana","Warning","Service temperature is already available");  // > Evolution.Hydrogen tank:6
+        x=1;}  // > Evolution.Hydrogen tank:7
+      t+=dt;  // > Evolution.Hydrogen tank:8
+      T=Tserv+Math.sin(t);}  // > Evolution.Hydrogen tank:9
+        // > Evolution.Hydrogen tank:10
+    //Restricción del volumen de H   // > Evolution.Hydrogen tank:11
+    //Restriction of H volume  // > Evolution.Hydrogen tank:12
+    if(Ca<1){  // > Evolution.Hydrogen tank:13
+         t+=dt;  // > Evolution.Hydrogen tank:14
+        // > Evolution.Hydrogen tank:15
+     var option = _view.comboBox.getProperty("SelectedOptions");  // > Evolution.Hydrogen tank:16
+     if (option=="water"){  // > Evolution.Hydrogen tank:17
+       Ca+=(Ncell*(I/(2*Nfa))*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:18
+     CaOx+=(Ncell*(I/(2*Nfa))*0.5*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:19
+      }  // > Evolution.Hydrogen tank:20
+      else if (option=="hydrogen chloride"){  // > Evolution.Hydrogen tank:21
+        Ca+=(Ncell*(I/(2*Nfa))*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:22
+         CaOx+=(Ncell*(I/(2*Nfa))*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:23
+        }  // > Evolution.Hydrogen tank:24
+        // > Evolution.Hydrogen tank:25
+        // > Evolution.Hydrogen tank:26
+     }  // > Evolution.Hydrogen tank:27
+        // > Evolution.Hydrogen tank:28
+    //Se llega a la presión deseada  // > Evolution.Hydrogen tank:29
+    //The desired pressure is reached  // > Evolution.Hydrogen tank:30
+       if(Ca>1&& Ca<1.02){  // > Evolution.Hydrogen tank:31
+         aux=10;  // > Evolution.Hydrogen tank:32
+       //  var opsion = JOptionPane.showOptionDialog(null, "Pressure tank has reached operation conditions\n What would you like to do?",   // > Evolution.Hydrogen tank:33
+       //  "Pressure check point", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,   // > Evolution.Hydrogen tank:34
+        // new Object[] {"Continue", "Open valve","Cancel"}, "Si");  // > Evolution.Hydrogen tank:35
+    //Abrimos valvula  // > Evolution.Hydrogen tank:36
+    //We open the valve  // > Evolution.Hydrogen tank:37
+    if (opsion==1){  // > Evolution.Hydrogen tank:38
+      t+=dt;  // > Evolution.Hydrogen tank:39
+      z=0;  // > Evolution.Hydrogen tank:40
+      valvle=0;  // > Evolution.Hydrogen tank:41
+       Ca=level;  // > Evolution.Hydrogen tank:42
+       CaOx+=(Ncell*(I/(2*Nfa))*0.5*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:43
+      }  // > Evolution.Hydrogen tank:44
+    //Seguimos llenando    // > Evolution.Hydrogen tank:45
+    //We keep filling  // > Evolution.Hydrogen tank:46
+    if (opsion==0) {   // > Evolution.Hydrogen tank:47
+       z=0;  // > Evolution.Hydrogen tank:48
+       Ca=1.04;  // > Evolution.Hydrogen tank:49
+       valvle=1;  // > Evolution.Hydrogen tank:50
+       }  // > Evolution.Hydrogen tank:51
+        }  // > Evolution.Hydrogen tank:52
+          // > Evolution.Hydrogen tank:53
+    //Opcion de cerrar valvula y seguir llenando      // > Evolution.Hydrogen tank:54
+    //Option to close the valve and keep filling  // > Evolution.Hydrogen tank:55
+    if (valvle==1 && aux!=2) {   // > Evolution.Hydrogen tank:56
+       t+=dt;  // > Evolution.Hydrogen tank:57
+      Ca=Ca+(Ncell*(I/(2*Nfa))*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:58
+      CaOx+=(Ncell*(I/(2*Nfa))*0.5*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:59
+      }  // > Evolution.Hydrogen tank:60
+    if (valvle==0){  // > Evolution.Hydrogen tank:61
+      if(aux==10) {  // > Evolution.Hydrogen tank:62
+        Ca=Ca;   // > Evolution.Hydrogen tank:63
+        CaOx+=(Ncell*(I/(2*Nfa))*0.5*R*T/(3.6*Math.pow(10,6)))*dt;} }  // > Evolution.Hydrogen tank:64
+        // > Evolution.Hydrogen tank:65
+     //Alertas por sobrepresion     // > Evolution.Hydrogen tank:66
+     //Overpressure alerts  // > Evolution.Hydrogen tank:67
+    if (Ca>1.5&& Ca<1.52){ if(z==0){  // > Evolution.Hydrogen tank:68
+     // var opcion = JOptionPane.showOptionDialog(null, "Pressure level has overcome recommended value\n What would you like to do?",   // > Evolution.Hydrogen tank:69
+     var opcion = _tools.showInputDialog("Pressure level has overcome recommended value\n What would you like to do?");  // > Evolution.Hydrogen tank:70
+       // > Evolution.Hydrogen tank:71
+     // "Pressure check point (2)", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,  // > Evolution.Hydrogen tank:72
+     // null, new Object[] {"Continue", "Open valve","Cancel"}, "Si");  // > Evolution.Hydrogen tank:73
+       if (opcion==1){  // > Evolution.Hydrogen tank:74
+         Ca=1.49;   // > Evolution.Hydrogen tank:75
+         valvle=0;  // > Evolution.Hydrogen tank:76
+         aux=0;}  // > Evolution.Hydrogen tank:77
+      else if (opcion==0) {   // > Evolution.Hydrogen tank:78
+      Ca=1.53;  // > Evolution.Hydrogen tank:79
+       valvle=1;}  // > Evolution.Hydrogen tank:80
+        }}  // > Evolution.Hydrogen tank:81
+        if (aux==0 && z==0){   // > Evolution.Hydrogen tank:82
+           Ca=Ca-(Ncell*(I*0.5/(2*Nfa))*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:83
+           CaOx+=(Ncell*(I/(2*Nfa))*0.25*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:84
+           if(Ca<0.8){valvle=1;}}  // > Evolution.Hydrogen tank:85
+           // > Evolution.Hydrogen tank:86
+       // > Evolution.Hydrogen tank:87
+     if (Ca>1.75){ z=1;  // > Evolution.Hydrogen tank:88
+       alert("Ventana","Warning procedure","Tank pressure is over safe conditions\n Electric power source will be unplugged");  // > Evolution.Hydrogen tank:89
+       Ca=1.74;  // > Evolution.Hydrogen tank:90
+       valvle=0;  // > Evolution.Hydrogen tank:91
+       aux=2;  // > Evolution.Hydrogen tank:92
+       ;}  // > Evolution.Hydrogen tank:93
+       if (aux==2){  // > Evolution.Hydrogen tank:94
+          Ca=Ca-(Ncell*(I*2/(2*Nfa))*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:95
+          CaOx+=(Ncell*(I/(2*Nfa))*0.000005*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Hydrogen tank:96
+           if (Ca<0.9){valvle=1;}  // > Evolution.Hydrogen tank:97
+       }  // > Evolution.Hydrogen tank:98
+        // > Evolution.Hydrogen tank:99
+  });
+
+  _model.addToEvolution(function() {
+    if (!__pagesEnabled["bubbles"]) return;
+    _ODEi_evolution2.step();
+  });
+
+  _model.addToEvolution(function() {
+    if (!__pagesEnabled["PSA"]) return;
+    if (Ca>1) {  // > Evolution.PSA:1
+      if (valvle==0){  // > Evolution.PSA:2
+     if (tciclo<120) {  // > Evolution.PSA:3
+        w=1;  // > Evolution.PSA:4
+        tciclo+=dt;  // > Evolution.PSA:5
+      }  // > Evolution.PSA:6
+      if (tciclo>120 && tciclo<125) {  // > Evolution.PSA:7
+        w=2;  // > Evolution.PSA:8
+        tciclo+=dt;  // > Evolution.PSA:9
+       }  // > Evolution.PSA:10
+       if(tciclo>125 && tciclo<475){  // > Evolution.PSA:11
+       w=3;  // > Evolution.PSA:12
+       tciclo+=dt;}  // > Evolution.PSA:13
+         if(tciclo>475 && tciclo<595){  // > Evolution.PSA:14
+       w=2;  // > Evolution.PSA:15
+       tciclo+=dt;}  // > Evolution.PSA:16
+       if(tciclo>595 && tciclo<600){  // > Evolution.PSA:17
+       w=1;  // > Evolution.PSA:18
+       tciclo+=dt;}  // > Evolution.PSA:19
+       if(tciclo>600 && tciclo<1075){  // > Evolution.PSA:20
+       w=0;  // > Evolution.PSA:21
+       tciclo+=dt;}  // > Evolution.PSA:22
+       if (tciclo>1075 && tciclo<1675) {  // > Evolution.PSA:23
+        w=1;  // > Evolution.PSA:24
+        tciclo+=dt;  // > Evolution.PSA:25
+      }  // > Evolution.PSA:26
+      if (tciclo>1675 && tciclo<1680) {  // > Evolution.PSA:27
+        w=2;  // > Evolution.PSA:28
+        tciclo+=dt;  // > Evolution.PSA:29
+       }  // > Evolution.PSA:30
+       if(tciclo>1680 && tciclo<2155){  // > Evolution.PSA:31
+       w=3;  // > Evolution.PSA:32
+       tciclo+=dt;}  // > Evolution.PSA:33
+         if(tciclo>2155 && tciclo<2275){  // > Evolution.PSA:34
+       w=2;  // > Evolution.PSA:35
+       tciclo+=dt;}  // > Evolution.PSA:36
+       if(tciclo>2275 && tciclo<2280){  // > Evolution.PSA:37
+       w=1;  // > Evolution.PSA:38
+       tciclo+=dt;}  // > Evolution.PSA:39
+       if(tciclo>2280 && tciclo<2755){  // > Evolution.PSA:40
+       w=0;  // > Evolution.PSA:41
+       tciclo+=dt;}  // > Evolution.PSA:42
+    }  // > Evolution.PSA:43
+    }  // > Evolution.PSA:44
+  });
+
+  _model.addToEvolution(function() {
+    if (!__pagesEnabled["Oxygen"]) return;
+      t+=dt;  // > Evolution.Oxygen:1
+        // > Evolution.Oxygen:2
+      CaPlot+=(Ncell*(I/(2*Nfa))*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Oxygen:3
+       if (CaOx>1) { // not used by current setup  // > Evolution.Oxygen:4
+        CaOx=0;  // > Evolution.Oxygen:5
+        t+=dt;  // > Evolution.Oxygen:6
+         // > Evolution.Oxygen:7
+         CaOx+=(Ncell*(I/(2*Nfa))*0.5*R*T/(3.6*Math.pow(10,6)))*dt;  // > Evolution.Oxygen:8
+        // > Evolution.Oxygen:9
+      //CaOx+=(Ncell*(I/(2*Nfa))*0.5*R*T/(3.6*Math.pow(10,6)))*dt; }  // > Evolution.Oxygen:10
+    }  // > Evolution.Oxygen:11
+  });
+
+  _model.addToEvolution(function() {
+    if (!__pagesEnabled["LED"]) return;
+    if (Ca<1) { color2 = "green";   // > Evolution.LED:1
+    color3 = "gray"; }  // > Evolution.LED:2
+    if (Ca>1) {   // > Evolution.LED:3
+    if (valvle==0) {color2 = "gray";  // > Evolution.LED:4
+    color3 = "green";}  // > Evolution.LED:5
+    if (valvle==1){color2 = "green";   // > Evolution.LED:6
+    color3 = "gray";}  // > Evolution.LED:7
+    }  // > Evolution.LED:8
+  });
+
+  _model.addToEvolution(function() {
+    if (!__pagesEnabled["Water Tank"]) return;
+    if (Vh<19) { if(aux!=2){  // > Evolution.Water Tank:1
+    t+=dt;  // > Evolution.Water Tank:2
+    Vh+=Ncell*(I/(2*Nfa))*R*T*ph*18/(7.2*Math.pow(10,6));}  // > Evolution.Water Tank:3
+    if (aux==2){t+=dt;  // > Evolution.Water Tank:4
+    Vh+=Ncell*0.00001*(I/(2*Nfa))*R*T*ph*18/(7.2*Math.pow(10,6));}}  // > Evolution.Water Tank:5
+    if (Vh>19){  // > Evolution.Water Tank:6
+    //int op= JOptionPane.showConfirmDialog(null, "Do you want to keep running current simulation?",   // > Evolution.Water Tank:7
+    //"Water tank is empty", JOptionPane.YES_NO_OPTION);  // > Evolution.Water Tank:8
+    var op= _tools.showInputDialog("Do you want to keep running current simulation?");  // > Evolution.Water Tank:9
+    if (op==0)  // > Evolution.Water Tank:10
+    {Vh=0;}  // > Evolution.Water Tank:11
+    if (op==1)  // > Evolution.Water Tank:12
+    {_reset();}}  // > Evolution.Water Tank:13
+  });
+
+  _model.addToFixedRelations(function() { _isPaused = _model.isPaused(); _isPlaying = _model.isPlaying(); });
+
+  _model.addToFixedRelations(function() {
+    if (!__pagesEnabled["RelFijas page"]) return;
+    Pr=(Ncell*(I/(2*Nfa))*R*T)/1000;  // > FixedRelations.RelFijas page:1
+    Ncell=(Prd*1000)/((I/(2*Nfa))*R*Tserv);  // > FixedRelations.RelFijas page:2
+    m=Ncell/2;  // > FixedRelations.RelFijas page:3
+    if (aux==1){  // > FixedRelations.RelFijas page:4
+    Pot=1.9*Ncell*I*0.001;}  // > FixedRelations.RelFijas page:5
+    if (aux==0)  // > FixedRelations.RelFijas page:6
+    {Pot=1.9*Ncell*I*0.5*0.001;}  // > FixedRelations.RelFijas page:7
+    if (aux==2)  // > FixedRelations.RelFijas page:8
+    {Pot=0;}  // > FixedRelations.RelFijas page:9
+  });
+
+  _model.addToFixedRelations(function() {
+    if (!__pagesEnabled["bubbles"]) return;
+    for (var i=0; i<ntotal  ; i++) {  // > FixedRelations.bubbles:1
+        if (r[i]-0.1*poisson(20)/20>=0) {   //determine bubble radius size  // > FixedRelations.bubbles:2
+         dr[i]=0; //stop growing this bubble  // > FixedRelations.bubbles:3
+         dy[i]=3*poisson(10)/10; // start moving up  // > FixedRelations.bubbles:4
+         count[i] = 1; // count when bubble starts to move up.  // > FixedRelations.bubbles:5
+         dr[i+1]=poisson(100)/100*intensity;  // > FixedRelations.bubbles:6
+          // > FixedRelations.bubbles:7
+        }  // > FixedRelations.bubbles:8
+          // > FixedRelations.bubbles:9
+         if (ybubble[i] - (6.5-Ca*10)>0) { //reach surface  // > FixedRelations.bubbles:10
+         dy[i] = 0; // stop move y direction  // > FixedRelations.bubbles:11
+         ybubbleshow[i]=false;  // > FixedRelations.bubbles:12
+         }  // > FixedRelations.bubbles:13
+        // if (y1bubble[i] - (6.5-CaOx)>0) { //reach surface  // > FixedRelations.bubbles:14
+       //  dy[i] = 0; // stop move y direction  // > FixedRelations.bubbles:15
+        // y1bubbleshow[i]=false;  // > FixedRelations.bubbles:16
+       //  }  // > FixedRelations.bubbles:17
+           // > FixedRelations.bubbles:18
+        }  // > FixedRelations.bubbles:19
+  });
+
+  _model.addToFixedRelations(function() {
+    if (!__pagesEnabled["bubbles 2"]) return;
+    for (var i=0; i<ntotal  ; i++) {  // > FixedRelations.bubbles 2:1
+        if (r1[i]-0.1*poisson(20)/20>=0) {   //determine bubble radius size  // > FixedRelations.bubbles 2:2
+         dr1[i]=0; //stop growing this bubble  // > FixedRelations.bubbles 2:3
+         dy1[i]=3*poisson(10)/10; // start moving up  // > FixedRelations.bubbles 2:4
+         count1[i] = 1; // count when bubble starts to move up.  // > FixedRelations.bubbles 2:5
+         dr1[i+1]=poisson(100)/100*intensity2;  // > FixedRelations.bubbles 2:6
+          // > FixedRelations.bubbles 2:7
+        }  // > FixedRelations.bubbles 2:8
+          // > FixedRelations.bubbles 2:9
+         //if (ybubble[i] - (6.5-Ca*10)>0) { //reach surface  // > FixedRelations.bubbles 2:10
+        // dy[i] = 0; // stop move y direction  // > FixedRelations.bubbles 2:11
+        // ybubbleshow[i]=false;  // > FixedRelations.bubbles 2:12
+        // }  // > FixedRelations.bubbles 2:13
+        if (y1bubble[i] - (6.5-CaOx*10)>0) { //reach surface  // > FixedRelations.bubbles 2:14
+        dy1[i] = 0; // stop move y direction  // > FixedRelations.bubbles 2:15
+         y1bubbleshow[i]=false;  // > FixedRelations.bubbles 2:16
+         }  // > FixedRelations.bubbles 2:17
+           // > FixedRelations.bubbles 2:18
+        }  // > FixedRelations.bubbles 2:19
+  });
+
+  _model.addToFixedRelations(function() {
+    if (!__pagesEnabled["electronstravelleft"]) return;
+    // Decrement the activation counter  // > FixedRelations.electronstravelleft:1
+        activationCounter--;  // > FixedRelations.electronstravelleft:2
+          // > FixedRelations.electronstravelleft:3
+        // Check if it's time to activate the next particle  // > FixedRelations.electronstravelleft:4
+        if (activationCounter <= 0 && currentActivationIndex < nparticles) {  // > FixedRelations.electronstravelleft:5
+            // Activate the particle by assigning a velocity  // > FixedRelations.electronstravelleft:6
+            particleVX[currentActivationIndex] = -0.1 * (1 + Math.random() * varianceFactor);  // > FixedRelations.electronstravelleft:7
+            currentActivationIndex++; // Move to the next particle  // > FixedRelations.electronstravelleft:8
+            activationCounter = activationDelay; // Reset the counter for the next activation  // > FixedRelations.electronstravelleft:9
+        }  // > FixedRelations.electronstravelleft:10
+          // > FixedRelations.electronstravelleft:11
+        // Update positions for all particles  // > FixedRelations.electronstravelleft:12
+        for (let i = 0; i < nparticles; i++) {  // > FixedRelations.electronstravelleft:13
+            // Only move particles that have been activated (velocity not 0)  // > FixedRelations.electronstravelleft:14
+            if (particleVX[i] !== 0) {  // > FixedRelations.electronstravelleft:15
+                particleX[i] += particleVX[i]; // Assuming particleX[] is your position array  // > FixedRelations.electronstravelleft:16
+                // Add any necessary bounds checking or updates here  // > FixedRelations.electronstravelleft:17
+            }  // > FixedRelations.electronstravelleft:18
+              // > FixedRelations.electronstravelleft:19
+            if (particleX[i] <= cathodeX) {  // > FixedRelations.electronstravelleft:20
+                // Stop the particle by setting its velocity to 0  // > FixedRelations.electronstravelleft:21
+                particleVX[i] = 0;  // > FixedRelations.electronstravelleft:22
+                  // > FixedRelations.electronstravelleft:23
+                // Optionally, you might want to adjust particleX[i] to exactly match cathodeX  // > FixedRelations.electronstravelleft:24
+                // to ensure it doesn't go beyond it due to the update step:  // > FixedRelations.electronstravelleft:25
+                // particleX[i] = cathodeX;  // > FixedRelations.electronstravelleft:26
+            }  // > FixedRelations.electronstravelleft:27
+              // > FixedRelations.electronstravelleft:28
+        }  // > FixedRelations.electronstravelleft:29
+          // > FixedRelations.electronstravelleft:30
+  });
+
+  _model.addToFixedRelations(function() { _isPaused = _model.isPaused(); _isPlaying = _model.isPlaying(); });
+
+  function _initializeSolvers() {
+    for (var i=0,n=_privateOdesList.length; i<n; i++) _privateOdesList[i].initializeSolver();
+  }
+
+  function _automaticResetSolvers() {
+    for (var i=0,n=_privateOdesList.length; i<n; i++) _privateOdesList[i].automaticResetSolver();
+  }
+
+  _model.resetSolvers = function() {
+    for (var i=0,n=_privateOdesList.length; i<n; i++) _privateOdesList[i].resetSolver();
+  };
+
+  _getODE = function (_odeName) {
+    if (_odeName=="Evol Page") return _ODEi_evolution1;
+    if (_odeName=="bubbles") return _ODEi_evolution2;
+    return null;
+  }
+
+  function _getEventSolver(_odeName) {
+    var ode = _getODE(_odeName);
+    if (ode===null) return null;
+    return ode.getEventSolver();
+  }
+
+  function _setSolverClass(_odeName, _engine) {
+    var ode = _getODE(_odeName);
+    if (ode===null) return;
+    if (!_engine.setODE) {
+      var classname = _engine.toLowerCase();
+      if      (classname.indexOf("boga")>=0)   _engine = EJSS_ODE_SOLVERS.bogackiShampine23;
+      else if (classname.indexOf("cash")>=0)   _engine = EJSS_ODE_SOLVERS.cashKarp45;
+      else if (classname.indexOf("dopri5")>=0) _engine = EJSS_ODE_SOLVERS.dopri5;
+      else if (classname.indexOf("dopri8")>=0) _engine = EJSS_ODE_SOLVERS.dopri853;
+      else if (classname.indexOf("richa")>=0)  _engine = EJSS_ODE_SOLVERS.eulerRichardson;
+      else if (classname.indexOf("euler")>=0)  _engine = EJSS_ODE_SOLVERS.euler;
+      else if (classname.indexOf("fehlberg87")>=0) _engine = EJSS_ODE_SOLVERS.fehlberg87;
+      else if (classname.indexOf("fehlberg8")>=0)  _engine = EJSS_ODE_SOLVERS.fehlberg8;
+      else if (classname.indexOf("radau")>=0)   _engine = EJSS_ODE_SOLVERS.radau5;
+      else if (classname.indexOf("runge")>=0)  _engine = EJSS_ODE_SOLVERS.rungeKutta4;
+      else if (classname.indexOf("rk4")>=0)    _engine = EJSS_ODE_SOLVERS.rungeKutta4;
+      else if (classname.indexOf("verlet")>=0) _engine = EJSS_ODE_SOLVERS.velocityVerlet;
+    }
+    if (_engine) ode.setSolverClass(_engine);
+  }
+
+  function _ODE_evolution1() {
+    var __odeSelf = {};
+    var __eventSolver;
+    var __solverClass = EJSS_ODE_SOLVERS.rungeKutta4;
+    var __state=[];
+    var __ignoreErrors=false;
+    var __mustInitialize=true;
+    var __isEnabled=true;
+    var __mustUserReinitialize=false;
+    var __mustReinitialize=true;
+
+    var _rLength;
+    var _particleXLength;
+
+    __odeSelf._getOdeVars = function (){ return["T","r","particleX","t"]};
+
+    __odeSelf.setSolverClass = function(__aSolverClass) {
+      __solverClass = __aSolverClass;
+      __instantiateSolver();
+    };
+
+    function __instantiateSolver() {
+      __state=[];
+      _rLength = r.length;
+      _particleXLength = particleX.length;
+      __pushState();
+      __eventSolver = EJSS_ODE_SOLVERS.interpolatorEventSolver(__solverClass(),__odeSelf);
+      __mustInitialize = true;
+    }
+
+    __odeSelf.setEnabled = function(_enabled) { __isEnabled = _enabled; };
+
+    __odeSelf.getIndependentVariableValue = function() { return __eventSolver.getIndependentVariableValue(); };
+
+    __odeSelf.getInternalStepSize = function() { return __eventSolver.getInternalStepSize(); };
+
+    __odeSelf.isAccelerationIndependentOfVelocity = function() { return false; };
+
+    __odeSelf.initializeSolver = function() {
+      if (__arraysChanged()) { __instantiateSolver(); __odeSelf.initializeSolver(); return; }
+      __pushState();
+      __eventSolver.initialize(0.05);
+      __eventSolver.setBestInterpolation(false);
+      __eventSolver.setMaximumInternalSteps(10000);
+      __eventSolver.removeAllEvents();
+      for(k in userEvents1){__eventSolver.addEvent(userEvents1[k]);}
+      __eventSolver.setEstimateFirstStep(false);
+      __eventSolver.setEnableExceptions(false);
+      __eventSolver.setTolerances(0.00001,0.00001);
+      __mustReinitialize = true;
+      __mustInitialize = false;
+    };
+
+    function __pushState() {
+      // Copy our variables to __state[] 
+        var __j=0;
+        var __n=0;
+        var __cIn=0;
+        if (__state[__cIn]!=T) __mustReinitialize = true;
+        __state[__cIn++] = T;
+      if (!__mustReinitialize)
+        for (__j=0,__n=__cIn; __j<_rLength; __j++)
+           if (__state[__n++]!=r[__j]) { __mustReinitialize = true; break; }
+        for (__j=0;__j<_rLength; __j++) {
+          __state[__cIn++] = r[__j];
+        }
+      if (!__mustReinitialize)
+        for (__j=0,__n=__cIn; __j<_particleXLength; __j++)
+           if (__state[__n++]!=particleX[__j]) { __mustReinitialize = true; break; }
+        for (__j=0;__j<_particleXLength; __j++) {
+          __state[__cIn++] = particleX[__j];
+        }
+        if (__state[__cIn]!=t) __mustReinitialize = true;
+        __state[__cIn++] = t;
+    }
+
+    function __arraysChanged () {
+      if (_rLength != r.length) return true;
+      if (_particleXLength != particleX.length) return true;
+      return false;
+    }
+
+    __odeSelf.getEventSolver = function() {
+      return __eventSolver;
+    };
+
+    __odeSelf.resetSolver = function() {
+      __mustUserReinitialize = true;
+    };
+
+    __odeSelf.automaticResetSolver = function() {
+      __mustReinitialize = true;
+    };
+
+    function __errorAction () {
+      if (__ignoreErrors) return;
+      console.log (__eventSolver.getErrorMessage());
+      _pause();
+      // Make sure the solver is reinitialized;
+      __mustReinitialize = true;
+    }
+
+    __odeSelf.step = function() { return __privateStep(false); };
+
+    __odeSelf.solverStep = function() { return __privateStep(true); };
+
+    function __privateStep(__takeMaximumStep) {
+      if (!__isEnabled) return 0;
+      if (0.05===0) return 0;
+      if (__mustInitialize) __odeSelf.initializeSolver();
+      if (__arraysChanged()) { __instantiateSolver(); __odeSelf.initializeSolver(); }
+      __eventSolver.setStepSize(0.05);
+      __eventSolver.setInternalStepSize(0.05);
+      __eventSolver.setMaximumInternalSteps(10000);
+      __eventSolver.setTolerances(0.00001,0.00001);
+      __pushState();
+      if (__mustUserReinitialize) { 
+        __eventSolver.userReinitialize();
+        __mustUserReinitialize = false;
+        __mustReinitialize = false;
+        if (__eventSolver.getErrorCode()!=EJSS_ODE_SOLVERS.ERROR.NO_ERROR) __errorAction();
+      }
+      else if (__mustReinitialize) { 
+        __eventSolver.reinitialize();
+        __mustReinitialize = false;
+        if (__eventSolver.getErrorCode()!=EJSS_ODE_SOLVERS.ERROR.NO_ERROR) __errorAction();
+      }
+      var __stepTaken = __takeMaximumStep ? __eventSolver.maxStep() : __eventSolver.step();
+      // Extract our variables from __state
+        var __i=0;
+        var __cOut=0;
+        T = __state[__cOut++];
+        for (__i=0;__i<_rLength; __i++) {
+          r[__i] = __state[__cOut++];
+        }
+        for (__i=0;__i<_particleXLength; __i++) {
+          particleX[__i] = __state[__cOut++];
+        }
+        t = __state[__cOut++];
+      // Check for error
+      if (__eventSolver.getErrorCode()!=EJSS_ODE_SOLVERS.ERROR.NO_ERROR) __errorAction();
+      return __stepTaken;
+    }
+
+    __odeSelf.getState = function() { return __state; };
+
+    __odeSelf.getRate = function(_aState,_aRate) {
+      _aRate[_aRate.length-1] = 0.0; // In case the prelim code returns
+      var __index=-1; // so that it can be used in preliminary code
+      // Extract our variables from _aState
+        var __i=0;
+        var __cOut=0;
+        var T = _aState[__cOut++];
+        var r = [];
+        for (__i=0;__i<_rLength; __i++) {
+          r[__i] = _aState[__cOut++];
+        }
+        var particleX = [];
+        for (__i=0;__i<_particleXLength; __i++) {
+          particleX[__i] = _aState[__cOut++];
+        }
+        var t = _aState[__cOut++];
+      // Preliminary code: Code to be executed before rate equations are evaluated
+        var varianceFactor = 0.5  // > Preliminary code for ODE.Evol Page:1
+      // Compute the rate
+        var __cRate=0;
+        _aRate[__cRate++] = ((I*I)*(8*Math.pow(10,-9))*(T*T)-1.3*Math.pow(10,-4)*T+0.055)/(1000*Cp*m); // Rate for ODE: Evol Page:T
+        for (__i=0;__i<_rLength;__i++) {
+          _aRate[__cRate++] = Array.isArray(dr[__i]) ? dr[__i][__i] : dr[__i]; // Rate for ODE: Evol Page:r
+        }
+        var i;
+        for (i=0;i<_particleXLength;i++) {
+          _aRate[__cRate++] = Array.isArray(particleVX[i]) ? particleVX[i][i] : particleVX[i]; // Rate for ODE: Evol Page:particleX
+        }
+        _aRate[__cRate++] = 1; // independent variable
+        return _aRate;
+    }; //end of getRate
+
+    __odeSelf._addEvent = function(userCondition,userAction,eventType,eventMethod,maxIter,eventTolerance,endAtEvent){
+    var User_Event = function (userCondition,userAction,eventType,eventMethod,maxIter,eventTolerance,endAtEvent) {
+      var _eventSelf = {};
+
+      _eventSelf.getTypeOfEvent = function() { return eventType; };
+
+      _eventSelf.getRootFindingMethod = function() { return eventMethod; };
+
+      _eventSelf.getMaxIterations = function() { return maxIter; };
+
+      _eventSelf.getTolerance = function() { return eventTolerance; };
+
+      _eventSelf.evaluate = function(_aState) { 
+      // Extract our variables from _aState
+        var __i=0;
+        var __cOut=0;
+        var T = _aState[__cOut++];
+        var r = [];
+        for (__i=0;__i<_rLength; __i++) {
+          r[__i] = _aState[__cOut++];
+        }
+        var particleX = [];
+        for (__i=0;__i<_particleXLength; __i++) {
+          particleX[__i] = _aState[__cOut++];
+        }
+        var t = _aState[__cOut++];
+      return eval(userCondition);
+      };
+
+      _eventSelf.action = function() { 
+      // Extract our variables from __state
+        var __i=0;
+        var __cOut=0;
+        T = __state[__cOut++];
+        for (__i=0;__i<_rLength; __i++) {
+          r[__i] = __state[__cOut++];
+        }
+        for (__i=0;__i<_particleXLength; __i++) {
+          particleX[__i] = __state[__cOut++];
+        }
+        t = __state[__cOut++];
+        var _returnValue = __userDefinedAction();
+      // Copy our variables to __state[] 
+        var __j=0;
+        var __n=0;
+        var __cIn=0;
+        __state[__cIn++] = T;
+        for (__j=0;__j<_rLength; __j++) {
+          __state[__cIn++] = r[__j];
+        }
+        for (__j=0;__j<_particleXLength; __j++) {
+          __state[__cIn++] = particleX[__j];
+        }
+        __state[__cIn++] = t;
+        return _returnValue;
+      };
+
+      function __userDefinedAction() {
+        if (undefined != functions) eval(functions.toString());
+        eval(userAction);
+        return endAtEvent;
+      }
+
+      return _eventSelf;
+    }; // End of event
+
+   userEvents1.push(User_Event(userCondition,userAction,eventType,eventMethod,maxIter,eventTolerance,endAtEvent));
+   }
+
+    __instantiateSolver();
+
+    return __odeSelf;
+  }
+
+  function _historic_T(__time) {
+    var __index = 0;
+    return _ODEi_evolution1.getEventSolver().getStateHistory().interpolate(__time,__index);
+  }
+
+  function _historic_r(__time) {
+    var __beginIndex = 0 + 1;
+    return _ODEi_evolution1.getEventSolver().getStateHistory().interpolate(__time,new Array(r.length),__beginIndex,r.ength);
+  }
+
+  function _historic_particleX(__time) {
+    var __beginIndex = 0 + 1 + r.length;
+    return _ODEi_evolution1.getEventSolver().getStateHistory().interpolate(__time,new Array(particleX.length),__beginIndex,particleX.ength);
+  }
+
+  function _ODE_evolution2() {
+    var __odeSelf = {};
+    var __eventSolver;
+    var __solverClass = EJSS_ODE_SOLVERS.cashKarp45;
+    var __state=[];
+    var __ignoreErrors=false;
+    var __mustInitialize=true;
+    var __isEnabled=true;
+    var __mustUserReinitialize=false;
+    var __mustReinitialize=true;
+
+    var _rLength;
+    var _r1Length;
+    var _ybubbleLength;
+    var _y1bubbleLength;
+
+    __odeSelf._getOdeVars = function (){ return["r","r1","ybubble","y1bubble","t"]};
+
+    __odeSelf.setSolverClass = function(__aSolverClass) {
+      __solverClass = __aSolverClass;
+      __instantiateSolver();
+    };
+
+    function __instantiateSolver() {
+      __state=[];
+      _rLength = r.length;
+      _r1Length = r1.length;
+      _ybubbleLength = ybubble.length;
+      _y1bubbleLength = y1bubble.length;
+      __pushState();
+      __eventSolver = EJSS_ODE_SOLVERS.interpolatorEventSolver(__solverClass(),__odeSelf);
+      __mustInitialize = true;
+    }
+
+    __odeSelf.setEnabled = function(_enabled) { __isEnabled = _enabled; };
+
+    __odeSelf.getIndependentVariableValue = function() { return __eventSolver.getIndependentVariableValue(); };
+
+    __odeSelf.getInternalStepSize = function() { return __eventSolver.getInternalStepSize(); };
+
+    __odeSelf.isAccelerationIndependentOfVelocity = function() { return false; };
+
+    __odeSelf.initializeSolver = function() {
+      if (__arraysChanged()) { __instantiateSolver(); __odeSelf.initializeSolver(); return; }
+      __pushState();
+      __eventSolver.initialize(dt);
+      __eventSolver.setBestInterpolation(false);
+      __eventSolver.setMaximumInternalSteps(10000);
+      __eventSolver.removeAllEvents();
+      for(k in userEvents2){__eventSolver.addEvent(userEvents2[k]);}
+      __eventSolver.setEstimateFirstStep(false);
+      __eventSolver.setEnableExceptions(false);
+      __eventSolver.setTolerances(0.00001,0.00001);
+      __mustReinitialize = true;
+      __mustInitialize = false;
+    };
+
+    function __pushState() {
+      // Copy our variables to __state[] 
+        var __j=0;
+        var __n=0;
+        var __cIn=0;
+      if (!__mustReinitialize)
+        for (__j=0,__n=__cIn; __j<_rLength; __j++)
+           if (__state[__n++]!=r[__j]) { __mustReinitialize = true; break; }
+        for (__j=0;__j<_rLength; __j++) {
+          __state[__cIn++] = r[__j];
+        }
+      if (!__mustReinitialize)
+        for (__j=0,__n=__cIn; __j<_r1Length; __j++)
+           if (__state[__n++]!=r1[__j]) { __mustReinitialize = true; break; }
+        for (__j=0;__j<_r1Length; __j++) {
+          __state[__cIn++] = r1[__j];
+        }
+      if (!__mustReinitialize)
+        for (__j=0,__n=__cIn; __j<_ybubbleLength; __j++)
+           if (__state[__n++]!=ybubble[__j]) { __mustReinitialize = true; break; }
+        for (__j=0;__j<_ybubbleLength; __j++) {
+          __state[__cIn++] = ybubble[__j];
+        }
+      if (!__mustReinitialize)
+        for (__j=0,__n=__cIn; __j<_y1bubbleLength; __j++)
+           if (__state[__n++]!=y1bubble[__j]) { __mustReinitialize = true; break; }
+        for (__j=0;__j<_y1bubbleLength; __j++) {
+          __state[__cIn++] = y1bubble[__j];
+        }
+        if (__state[__cIn]!=t) __mustReinitialize = true;
+        __state[__cIn++] = t;
+    }
+
+    function __arraysChanged () {
+      if (_rLength != r.length) return true;
+      if (_r1Length != r1.length) return true;
+      if (_ybubbleLength != ybubble.length) return true;
+      if (_y1bubbleLength != y1bubble.length) return true;
+      return false;
+    }
+
+    __odeSelf.getEventSolver = function() {
+      return __eventSolver;
+    };
+
+    __odeSelf.resetSolver = function() {
+      __mustUserReinitialize = true;
+    };
+
+    __odeSelf.automaticResetSolver = function() {
+      __mustReinitialize = true;
+    };
+
+    function __errorAction () {
+      if (__ignoreErrors) return;
+      console.log (__eventSolver.getErrorMessage());
+      _pause();
+      // Make sure the solver is reinitialized;
+      __mustReinitialize = true;
+    }
+
+    __odeSelf.step = function() { return __privateStep(false); };
+
+    __odeSelf.solverStep = function() { return __privateStep(true); };
+
+    function __privateStep(__takeMaximumStep) {
+      if (!__isEnabled) return 0;
+      if (dt===0) return 0;
+      if (__mustInitialize) __odeSelf.initializeSolver();
+      if (__arraysChanged()) { __instantiateSolver(); __odeSelf.initializeSolver(); }
+      __eventSolver.setStepSize(dt);
+      __eventSolver.setInternalStepSize(dt);
+      __eventSolver.setMaximumInternalSteps(10000);
+      __eventSolver.setTolerances(0.00001,0.00001);
+      __pushState();
+      if (__mustUserReinitialize) { 
+        __eventSolver.userReinitialize();
+        __mustUserReinitialize = false;
+        __mustReinitialize = false;
+        if (__eventSolver.getErrorCode()!=EJSS_ODE_SOLVERS.ERROR.NO_ERROR) __errorAction();
+      }
+      else if (__mustReinitialize) { 
+        __eventSolver.reinitialize();
+        __mustReinitialize = false;
+        if (__eventSolver.getErrorCode()!=EJSS_ODE_SOLVERS.ERROR.NO_ERROR) __errorAction();
+      }
+      var __stepTaken = __takeMaximumStep ? __eventSolver.maxStep() : __eventSolver.step();
+      // Extract our variables from __state
+        var __i=0;
+        var __cOut=0;
+        for (__i=0;__i<_rLength; __i++) {
+          r[__i] = __state[__cOut++];
+        }
+        for (__i=0;__i<_r1Length; __i++) {
+          r1[__i] = __state[__cOut++];
+        }
+        for (__i=0;__i<_ybubbleLength; __i++) {
+          ybubble[__i] = __state[__cOut++];
+        }
+        for (__i=0;__i<_y1bubbleLength; __i++) {
+          y1bubble[__i] = __state[__cOut++];
+        }
+        t = __state[__cOut++];
+      // Check for error
+      if (__eventSolver.getErrorCode()!=EJSS_ODE_SOLVERS.ERROR.NO_ERROR) __errorAction();
+      return __stepTaken;
+    }
+
+    __odeSelf.getState = function() { return __state; };
+
+    __odeSelf.getRate = function(_aState,_aRate) {
+      // Extract our variables from _aState
+        var __i=0;
+        var __cOut=0;
+        var r = [];
+        for (__i=0;__i<_rLength; __i++) {
+          r[__i] = _aState[__cOut++];
+        }
+        var r1 = [];
+        for (__i=0;__i<_r1Length; __i++) {
+          r1[__i] = _aState[__cOut++];
+        }
+        var ybubble = [];
+        for (__i=0;__i<_ybubbleLength; __i++) {
+          ybubble[__i] = _aState[__cOut++];
+        }
+        var y1bubble = [];
+        for (__i=0;__i<_y1bubbleLength; __i++) {
+          y1bubble[__i] = _aState[__cOut++];
+        }
+        var t = _aState[__cOut++];
+      // Compute the rate
+        var __cRate=0;
+        for (__i=0;__i<_rLength;__i++) {
+          _aRate[__cRate++] = Array.isArray(dr[__i]) ? dr[__i][__i] : dr[__i]; // Rate for ODE: bubbles:r
+        }
+        for (__i=0;__i<_r1Length;__i++) {
+          _aRate[__cRate++] = Array.isArray(dr1[__i]) ? dr1[__i][__i] : dr1[__i]; // Rate for ODE: bubbles:r1
+        }
+        for (__i=0;__i<_ybubbleLength;__i++) {
+          _aRate[__cRate++] = Array.isArray(dy[__i]) ? dy[__i][__i] : dy[__i]; // Rate for ODE: bubbles:ybubble
+        }
+        for (__i=0;__i<_y1bubbleLength;__i++) {
+          _aRate[__cRate++] = Array.isArray(dy1[__i]) ? dy1[__i][__i] : dy1[__i]; // Rate for ODE: bubbles:y1bubble
+        }
+        _aRate[__cRate++] = 1; // independent variable
+        return _aRate;
+    }; //end of getRate
+
+    __odeSelf._addEvent = function(userCondition,userAction,eventType,eventMethod,maxIter,eventTolerance,endAtEvent){
+    var User_Event = function (userCondition,userAction,eventType,eventMethod,maxIter,eventTolerance,endAtEvent) {
+      var _eventSelf = {};
+
+      _eventSelf.getTypeOfEvent = function() { return eventType; };
+
+      _eventSelf.getRootFindingMethod = function() { return eventMethod; };
+
+      _eventSelf.getMaxIterations = function() { return maxIter; };
+
+      _eventSelf.getTolerance = function() { return eventTolerance; };
+
+      _eventSelf.evaluate = function(_aState) { 
+      // Extract our variables from _aState
+        var __i=0;
+        var __cOut=0;
+        var r = [];
+        for (__i=0;__i<_rLength; __i++) {
+          r[__i] = _aState[__cOut++];
+        }
+        var r1 = [];
+        for (__i=0;__i<_r1Length; __i++) {
+          r1[__i] = _aState[__cOut++];
+        }
+        var ybubble = [];
+        for (__i=0;__i<_ybubbleLength; __i++) {
+          ybubble[__i] = _aState[__cOut++];
+        }
+        var y1bubble = [];
+        for (__i=0;__i<_y1bubbleLength; __i++) {
+          y1bubble[__i] = _aState[__cOut++];
+        }
+        var t = _aState[__cOut++];
+      return eval(userCondition);
+      };
+
+      _eventSelf.action = function() { 
+      // Extract our variables from __state
+        var __i=0;
+        var __cOut=0;
+        for (__i=0;__i<_rLength; __i++) {
+          r[__i] = __state[__cOut++];
+        }
+        for (__i=0;__i<_r1Length; __i++) {
+          r1[__i] = __state[__cOut++];
+        }
+        for (__i=0;__i<_ybubbleLength; __i++) {
+          ybubble[__i] = __state[__cOut++];
+        }
+        for (__i=0;__i<_y1bubbleLength; __i++) {
+          y1bubble[__i] = __state[__cOut++];
+        }
+        t = __state[__cOut++];
+        var _returnValue = __userDefinedAction();
+      // Copy our variables to __state[] 
+        var __j=0;
+        var __n=0;
+        var __cIn=0;
+        for (__j=0;__j<_rLength; __j++) {
+          __state[__cIn++] = r[__j];
+        }
+        for (__j=0;__j<_r1Length; __j++) {
+          __state[__cIn++] = r1[__j];
+        }
+        for (__j=0;__j<_ybubbleLength; __j++) {
+          __state[__cIn++] = ybubble[__j];
+        }
+        for (__j=0;__j<_y1bubbleLength; __j++) {
+          __state[__cIn++] = y1bubble[__j];
+        }
+        __state[__cIn++] = t;
+        return _returnValue;
+      };
+
+      function __userDefinedAction() {
+        if (undefined != functions) eval(functions.toString());
+        eval(userAction);
+        return endAtEvent;
+      }
+
+      return _eventSelf;
+    }; // End of event
+
+   userEvents2.push(User_Event(userCondition,userAction,eventType,eventMethod,maxIter,eventTolerance,endAtEvent));
+   }
+
+    __instantiateSolver();
+
+    return __odeSelf;
+  }
+
+  function _historic_r(__time) {
+    var __beginIndex = 0;
+    return _ODEi_evolution2.getEventSolver().getStateHistory().interpolate(__time,new Array(r.length),__beginIndex,r.ength);
+  }
+
+  function _historic_r1(__time) {
+    var __beginIndex = 0 + r.length;
+    return _ODEi_evolution2.getEventSolver().getStateHistory().interpolate(__time,new Array(r1.length),__beginIndex,r1.ength);
+  }
+
+  function _historic_ybubble(__time) {
+    var __beginIndex = 0 + r.length + r1.length;
+    return _ODEi_evolution2.getEventSolver().getStateHistory().interpolate(__time,new Array(ybubble.length),__beginIndex,ybubble.ength);
+  }
+
+  function _historic_y1bubble(__time) {
+    var __beginIndex = 0 + r.length + r1.length + ybubble.length;
+    return _ODEi_evolution2.getEventSolver().getStateHistory().interpolate(__time,new Array(y1bubble.length),__beginIndex,y1bubble.ength);
+  }
+
+    _model._fontResized = function(iBase,iSize,iDelta) {
+      _view._fontResized(iBase,iSize,iDelta);
+  }; // end of _fontResized
+
+  function _getViews() {
+    var _viewsInfo = [];
+    var _counter = 0;
+    _viewsInfo[_counter++] = { name : "HtmlView Page", width : 800, height : 600 };
+    return _viewsInfo;
+  } // end of _getViews
+
+  function _selectView(_viewNumber) {
+    _view = null;
+    _view = new ElectrolysisofWaterVirtualLabv4_View(_topFrame,_viewNumber,_libraryPath,_codebasePath);
+    var _view_super_reset = _view._reset;
+    _view._reset = function() {
+      _view_super_reset();
+      switch(_viewNumber) {
+        case -10 : break; // make Lint happy
+        default :
+        case 0:
+          _view.label.linkProperty("Font",  function() { return font; }, function(_v) { font = _v; } ); // HtmlView Page linking property 'Font' for element 'label'
+          _view.showElectron.linkProperty("Checked",  function() { return showElectron; }, function(_v) { showElectron = _v; } ); // HtmlView Page linking property 'Checked' for element 'showElectron'
+          _view.showElectron.linkProperty("Font",  function() { return font; }, function(_v) { font = _v; } ); // HtmlView Page linking property 'Font' for element 'showElectron'
+          _view.comboBox.linkProperty("Options",  function() { return ["water","hydrogen chloride"]; } ); // HtmlView Page linking property 'Options' for element 'comboBox'
+          _view.comboBox.setAction("OnChange", function(_data,_info) {
+  var opts = _view.comboBox.getProperty("SelectedOptions");  // array of options
+      var option = (opts.length > 0)? opts[0]:""; // selected option 
+  if (option=="water"){
+    intensity=0.1;
+    intensity2=0.05;
+    }
+    
+    else if (option=="hydrogen chloride"){
+       intensity=0.1;
+    intensity2=0.05;
+      }
+
+}); // HtmlView Page setting action 'OnChange' for element 'comboBox'
+          _view.playPauseButton.setAction("OffClick", function(_data,_info) {
+  //text="paused";
+  //isPaused=true;
+  _pause();
+
+}); // HtmlView Page setting action 'OffClick' for element 'playPauseButton'
+          _view.playPauseButton.linkProperty("State",  function() { return _isPaused; } ); // HtmlView Page linking property 'State' for element 'playPauseButton'
+          _view.playPauseButton.setAction("OnClick", function(_data,_info) {
+  _play();
+  //isPaused=false;
+  //text="playing";
+
+}); // HtmlView Page setting action 'OnClick' for element 'playPauseButton'
+          _view.playPauseButton.linkProperty("Font",  function() { return font; }, function(_v) { font = _v; } ); // HtmlView Page linking property 'Font' for element 'playPauseButton'
+          _view.resetButton2.setAction("OnClick", _reset); // HtmlView Page setting action 'OnClick' for element 'resetButton2'
+          _view.resetButton2.linkProperty("Font",  function() { return font; }, function(_v) { font = _v; } ); // HtmlView Page linking property 'Font' for element 'resetButton2'
+          _view.plottingPanel.linkProperty("Height",  function() { return changeOrientation(); }, function(_v) { changeOrientation() = _v; } ); // HtmlView Page linking property 'Height' for element 'plottingPanel'
+          _view.plottingPanel.linkProperty("TRMessage",  function() { return "Ca="+Ca.toFixed(2)+"\nCaOx="+CaOx.toFixed(2); } ); // HtmlView Page linking property 'TRMessage' for element 'plottingPanel'
+          _view.hydrogen_tank.linkProperty("Rotate",  function() { return Math.PI; } ); // HtmlView Page linking property 'Rotate' for element 'hydrogen_tank'
+          _view.hydrogen_tank.linkProperty("Level",  function() { return Ca*10; } ); // HtmlView Page linking property 'Level' for element 'hydrogen_tank'
+          _view.H2.linkProperty("Text",  function() { return "H₂="+(Ca*10).toFixed(2); } ); // HtmlView Page linking property 'Text' for element 'H2'
+          _view.oxygen_tank.linkProperty("Rotate",  function() { return Math.PI; } ); // HtmlView Page linking property 'Rotate' for element 'oxygen_tank'
+          _view.oxygen_tank.linkProperty("Level",  function() { return CaOx*10; } ); // HtmlView Page linking property 'Level' for element 'oxygen_tank'
+          _view.O2.linkProperty("Text",  function() { return "O₂="+(CaOx*10).toFixed(2); } ); // HtmlView Page linking property 'Text' for element 'O2'
+          _view.electrode_12.linkProperty("SizeX",  function() { return cathodeSizeX; }, function(_v) { cathodeSizeX = _v; } ); // HtmlView Page linking property 'SizeX' for element 'electrode_12'
+          _view.electrode_12.linkProperty("X",  function() { return cathodeX; }, function(_v) { cathodeX = _v; } ); // HtmlView Page linking property 'X' for element 'electrode_12'
+          _view.electrode_12.linkProperty("Y",  function() { return cathodeY; }, function(_v) { cathodeY = _v; } ); // HtmlView Page linking property 'Y' for element 'electrode_12'
+          _view.electrode_12.linkProperty("SizeY",  function() { return cathodeSizeY; }, function(_v) { cathodeSizeY = _v; } ); // HtmlView Page linking property 'SizeY' for element 'electrode_12'
+          _view.electrode_1.linkProperty("SizeX",  function() { return cathodeSizeX; }, function(_v) { cathodeSizeX = _v; } ); // HtmlView Page linking property 'SizeX' for element 'electrode_1'
+          _view.electrode_1.linkProperty("X",  function() { return cathodeX; }, function(_v) { cathodeX = _v; } ); // HtmlView Page linking property 'X' for element 'electrode_1'
+          _view.electrode_1.linkProperty("Y",  function() { return cathodeY; }, function(_v) { cathodeY = _v; } ); // HtmlView Page linking property 'Y' for element 'electrode_1'
+          _view.electrode_1.linkProperty("SizeY",  function() { return cathodeSizeY; }, function(_v) { cathodeSizeY = _v; } ); // HtmlView Page linking property 'SizeY' for element 'electrode_1'
+          _view.electrode_1_text.linkProperty("Rotate",  function() { return Math.PI/2; } ); // HtmlView Page linking property 'Rotate' for element 'electrode_1_text'
+          _view.electrode_22.linkProperty("SizeX",  function() { return anodeSizeX; }, function(_v) { anodeSizeX = _v; } ); // HtmlView Page linking property 'SizeX' for element 'electrode_22'
+          _view.electrode_22.linkProperty("X",  function() { return anodeX; }, function(_v) { anodeX = _v; } ); // HtmlView Page linking property 'X' for element 'electrode_22'
+          _view.electrode_22.linkProperty("Y",  function() { return anodeY; }, function(_v) { anodeY = _v; } ); // HtmlView Page linking property 'Y' for element 'electrode_22'
+          _view.electrode_22.linkProperty("SizeY",  function() { return anodeSizeY; }, function(_v) { anodeSizeY = _v; } ); // HtmlView Page linking property 'SizeY' for element 'electrode_22'
+          _view.electrode_2.linkProperty("SizeX",  function() { return anodeSizeX; }, function(_v) { anodeSizeX = _v; } ); // HtmlView Page linking property 'SizeX' for element 'electrode_2'
+          _view.electrode_2.linkProperty("X",  function() { return anodeX; }, function(_v) { anodeX = _v; } ); // HtmlView Page linking property 'X' for element 'electrode_2'
+          _view.electrode_2.linkProperty("Y",  function() { return anodeY; }, function(_v) { anodeY = _v; } ); // HtmlView Page linking property 'Y' for element 'electrode_2'
+          _view.electrode_2.linkProperty("SizeY",  function() { return anodeSizeY; }, function(_v) { anodeSizeY = _v; } ); // HtmlView Page linking property 'SizeY' for element 'electrode_2'
+          _view.particlesEclectrons.linkProperty("NumberOfElements",  function() { return nparticles; }, function(_v) { nparticles = _v; } ); // HtmlView Page linking property 'NumberOfElements' for element 'particlesEclectrons'
+          _view.particlesEclectrons.linkProperty("X",  function() { return particleX; }, function(_v) { particleX = _v; } ); // HtmlView Page linking property 'X' for element 'particlesEclectrons'
+          _view.particlesEclectrons.linkProperty("Y",  function() { return particleY; }, function(_v) { particleY = _v; } ); // HtmlView Page linking property 'Y' for element 'particlesEclectrons'
+          _view.particlesEclectrons.linkProperty("Visibility",  function() { return showElectron; }, function(_v) { showElectron = _v; } ); // HtmlView Page linking property 'Visibility' for element 'particlesEclectrons'
+          _view.electrode_2_text.linkProperty("Rotate",  function() { return Math.PI/2; } ); // HtmlView Page linking property 'Rotate' for element 'electrode_2_text'
+          _view.batteryunicode.linkProperty("Rotate",  function() { return -Math.PI/2; } ); // HtmlView Page linking property 'Rotate' for element 'batteryunicode'
+          _view.bubble_right.linkProperty("NumberOfElements",  function() { return ntotal; }, function(_v) { ntotal = _v; } ); // HtmlView Page linking property 'NumberOfElements' for element 'bubble_right'
+          _view.bubble_right.linkProperty("SizeX",  function() { return r1; }, function(_v) { r1 = _v; } ); // HtmlView Page linking property 'SizeX' for element 'bubble_right'
+          _view.bubble_right.linkProperty("X",  function() { return x1bubble; }, function(_v) { x1bubble = _v; } ); // HtmlView Page linking property 'X' for element 'bubble_right'
+          _view.bubble_right.linkProperty("Y",  function() { return y1bubble; }, function(_v) { y1bubble = _v; } ); // HtmlView Page linking property 'Y' for element 'bubble_right'
+          _view.bubble_right.linkProperty("Visibility",  function() { return y1bubbleshow; }, function(_v) { y1bubbleshow = _v; } ); // HtmlView Page linking property 'Visibility' for element 'bubble_right'
+          _view.bubble_right.linkProperty("SizeY",  function() { return r1; }, function(_v) { r1 = _v; } ); // HtmlView Page linking property 'SizeY' for element 'bubble_right'
+          _view.bubble_left.linkProperty("NumberOfElements",  function() { return ntotal; }, function(_v) { ntotal = _v; } ); // HtmlView Page linking property 'NumberOfElements' for element 'bubble_left'
+          _view.bubble_left.linkProperty("SizeX",  function() { return r; }, function(_v) { r = _v; } ); // HtmlView Page linking property 'SizeX' for element 'bubble_left'
+          _view.bubble_left.linkProperty("X",  function() { return xbubble; }, function(_v) { xbubble = _v; } ); // HtmlView Page linking property 'X' for element 'bubble_left'
+          _view.bubble_left.linkProperty("Y",  function() { return ybubble; }, function(_v) { ybubble = _v; } ); // HtmlView Page linking property 'Y' for element 'bubble_left'
+          _view.bubble_left.linkProperty("Visibility",  function() { return ybubbleshow; }, function(_v) { ybubbleshow = _v; } ); // HtmlView Page linking property 'Visibility' for element 'bubble_left'
+          _view.bubble_left.linkProperty("SizeY",  function() { return r; }, function(_v) { r = _v; } ); // HtmlView Page linking property 'SizeY' for element 'bubble_left'
+          break;
+      } // end of switch
+    }; // end of new reset
+
+    _model.setView(_view);
+    _model.reset();
+    _view._enableEPub();
+  } // end of _selectView
+
+  _model.setAutoplay(false);
+  _model.setFPS(20);
+  _model.setStepsPerDisplay(1);
+  _selectView(_model._autoSelectView(_getViews())); // this includes _model.reset()
+  return _model;
+}
+
+function ElectrolysisofWaterVirtualLabv4_View (_topFrame,_viewNumber,_libraryPath,_codebasePath) {
+  var _view;
+  switch(_viewNumber) {
+    case -10 : break; // make Lint happy
+    default :
+    case 0: _view = ElectrolysisofWaterVirtualLabv4_View_0 (_topFrame); break;
+  } // end of switch
+
+  if (_codebasePath) _view._setResourcePath(_codebasePath);
+
+  if (_libraryPath) _view._setLibraryPath(_libraryPath);
+
+  _view._addDescriptionPage('Inicio','./ElectrolysisofWaterVirtualLabv4_Intro_1.html');
+
+  return _view;
+} // end of main function
+
+function ElectrolysisofWaterVirtualLabv4_View_0 (_topFrame) {
+  var _view = EJSS_CORE.createView(_topFrame);
+
+  _view._reset = function() {
+    _view._clearAll();
+    _view._addElement(EJSS_INTERFACE.panel,"singlePlotPanel", _view._topFrame) // EJsS HtmlView.HtmlView Page: declaration of element 'singlePlotPanel'
+      ;
+
+    _view._addElement(EJSS_INTERFACE.panel,"controlPanel", _view.singlePlotPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'controlPanel'
+      .setProperty("Width","100%") // EJsS HtmlView.HtmlView Page: setting property 'Width' for element 'controlPanel'
+      .setProperty("CSS",{"display":"block"}) // EJsS HtmlView.HtmlView Page: setting property 'CSS' for element 'controlPanel'
+      .setProperty("BorderStyle","solid") // EJsS HtmlView.HtmlView Page: setting property 'BorderStyle' for element 'controlPanel'
+      .setProperty("BorderColor","Gray") // EJsS HtmlView.HtmlView Page: setting property 'BorderColor' for element 'controlPanel'
+      .setProperty("BorderWidth",1) // EJsS HtmlView.HtmlView Page: setting property 'BorderWidth' for element 'controlPanel'
+      ;
+
+    _view._addElement(EJSS_INTERFACE.imageAndTextButton,"label", _view.controlPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'label'
+      .setProperty("Text","Electrolysis Virtual Lab") // EJsS HtmlView.HtmlView Page: setting property 'Text' for element 'label'
+      ;
+
+    _view._addElement(EJSS_INTERFACE.checkBox,"showElectron", _view.controlPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'showElectron'
+      .setProperty("Text","show Atoms") // EJsS HtmlView.HtmlView Page: setting property 'Text' for element 'showElectron'
+      ;
+
+    _view._addElement(EJSS_INTERFACE.comboBox,"comboBox", _view.controlPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'comboBox'
+      .setProperty("Font","normal normal 40px ") // EJsS HtmlView.HtmlView Page: setting property 'Font' for element 'comboBox'
+      ;
+
+    _view._addElement(EJSS_INTERFACE.twoStateButton,"playPauseButton", _view.controlPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'playPauseButton'
+      .setProperty("Width","20%") // EJsS HtmlView.HtmlView Page: setting property 'Width' for element 'playPauseButton'
+      .setProperty("TextOn","Play▶") // EJsS HtmlView.HtmlView Page: setting property 'TextOn' for element 'playPauseButton'
+      .setProperty("Tooltip","Play/Pause") // EJsS HtmlView.HtmlView Page: setting property 'Tooltip' for element 'playPauseButton'
+      .setProperty("TextOff","Pause❚❚") // EJsS HtmlView.HtmlView Page: setting property 'TextOff' for element 'playPauseButton'
+      ;
+
+    _view._addElement(EJSS_INTERFACE.button,"resetButton2", _view.controlPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'resetButton2'
+      .setProperty("Width","20%") // EJsS HtmlView.HtmlView Page: setting property 'Width' for element 'resetButton2'
+      .setProperty("Text","Reset↻") // EJsS HtmlView.HtmlView Page: setting property 'Text' for element 'resetButton2'
+      ;
+
+    _view._addElement(EJSS_INTERFACE.wrappedPanel,"wrappedPanel", _view.singlePlotPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'wrappedPanel'
+      .setProperty("CSS",{ "display":"block"}) // EJsS HtmlView.HtmlView Page: setting property 'CSS' for element 'wrappedPanel'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.plottingPanel,"plottingPanel", _view.wrappedPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'plottingPanel'
+      .setProperty("Width","100%") // EJsS HtmlView.HtmlView Page: setting property 'Width' for element 'plottingPanel'
+      .setProperty("Gutters",[0,0,0,0]) // EJsS HtmlView.HtmlView Page: setting property 'Gutters' for element 'plottingPanel'
+      .setProperty("XFixedTick",-100) // EJsS HtmlView.HtmlView Page: setting property 'XFixedTick' for element 'plottingPanel'
+      .setProperty("Enabled",true) // EJsS HtmlView.HtmlView Page: setting property 'Enabled' for element 'plottingPanel'
+      .setProperty("SquareAspect",true) // EJsS HtmlView.HtmlView Page: setting property 'SquareAspect' for element 'plottingPanel'
+      .setProperty("MaximumY",7) // EJsS HtmlView.HtmlView Page: setting property 'MaximumY' for element 'plottingPanel'
+      .setProperty("MaximumX",5) // EJsS HtmlView.HtmlView Page: setting property 'MaximumX' for element 'plottingPanel'
+      .setProperty("YFixedTick",-100) // EJsS HtmlView.HtmlView Page: setting property 'YFixedTick' for element 'plottingPanel'
+      .setProperty("YAutoTicks",false) // EJsS HtmlView.HtmlView Page: setting property 'YAutoTicks' for element 'plottingPanel'
+      .setProperty("MinimumX",-5) // EJsS HtmlView.HtmlView Page: setting property 'MinimumX' for element 'plottingPanel'
+      .setProperty("MinimumY",-5) // EJsS HtmlView.HtmlView Page: setting property 'MinimumY' for element 'plottingPanel'
+      .setProperty("XTickStep",200) // EJsS HtmlView.HtmlView Page: setting property 'XTickStep' for element 'plottingPanel'
+      .setProperty("YTickStep",200) // EJsS HtmlView.HtmlView Page: setting property 'YTickStep' for element 'plottingPanel'
+      .setProperty("XAutoTicks",false) // EJsS HtmlView.HtmlView Page: setting property 'XAutoTicks' for element 'plottingPanel'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"Container", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'Container'
+      .setProperty("FillColor","Blue") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'Container'
+      .setProperty("SizeX",10) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'Container'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'Container'
+      .setProperty("X",0) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'Container'
+      .setProperty("Y",0) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'Container'
+      .setProperty("SizeY",5) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'Container'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"Container2", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'Container2'
+      .setProperty("FillColor","url(#mygrandient1)") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'Container2'
+      .setProperty("SizeX",10) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'Container2'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'Container2'
+      .setProperty("X",0) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'Container2'
+      .setProperty("Y",0) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'Container2'
+      .setProperty("SizeY",5) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'Container2'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"right_side", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'right_side'
+      .setProperty("FillColor","Black") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'right_side'
+      .setProperty("SizeX",0.1) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'right_side'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'right_side'
+      .setProperty("X",5) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'right_side'
+      .setProperty("Y",0.5) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'right_side'
+      .setProperty("SizeY",6) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'right_side'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"bottom", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'bottom'
+      .setProperty("FillColor","Black") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'bottom'
+      .setProperty("SizeX",10) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'bottom'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'bottom'
+      .setProperty("X",0) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'bottom'
+      .setProperty("Y",-2.5) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'bottom'
+      .setProperty("SizeY",0.1) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'bottom'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"left_side", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'left_side'
+      .setProperty("FillColor","Black") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'left_side'
+      .setProperty("SizeX",0.1) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'left_side'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'left_side'
+      .setProperty("X",-5) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'left_side'
+      .setProperty("Y",0.5) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'left_side'
+      .setProperty("SizeY",6) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'left_side'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.group,"H2testtube", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'H2testtube'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"test_tube", _view.H2testtube) // EJsS HtmlView.HtmlView Page: declaration of element 'test_tube'
+      .setProperty("SizeX",0.8) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'test_tube'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'test_tube'
+      .setProperty("X",-1.8) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'test_tube'
+      .setProperty("Y",4) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'test_tube'
+      .setProperty("SizeY",5) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'test_tube'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"test_tube2", _view.H2testtube) // EJsS HtmlView.HtmlView Page: declaration of element 'test_tube2'
+      .setProperty("FillColor","url(#mygrandient1)") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'test_tube2'
+      .setProperty("SizeX",0.8) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'test_tube2'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'test_tube2'
+      .setProperty("X",-1.8) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'test_tube2'
+      .setProperty("Y",4) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'test_tube2'
+      .setProperty("SizeY",5) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'test_tube2'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.group,"O2testtube", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'O2testtube'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"test_tube_2", _view.O2testtube) // EJsS HtmlView.HtmlView Page: declaration of element 'test_tube_2'
+      .setProperty("FillColor","Blue") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'test_tube_2'
+      .setProperty("SizeX",0.8) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'test_tube_2'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'test_tube_2'
+      .setProperty("X",1.8) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'test_tube_2'
+      .setProperty("Y",4) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'test_tube_2'
+      .setProperty("SizeY",5) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'test_tube_2'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"test_tube_22", _view.O2testtube) // EJsS HtmlView.HtmlView Page: declaration of element 'test_tube_22'
+      .setProperty("FillColor","url(#mygrandient1)") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'test_tube_22'
+      .setProperty("SizeX",0.8) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'test_tube_22'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'test_tube_22'
+      .setProperty("X",1.8) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'test_tube_22'
+      .setProperty("Y",4) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'test_tube_22'
+      .setProperty("SizeY",5) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'test_tube_22'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.tank,"hydrogen_tank", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'hydrogen_tank'
+      .setProperty("LevelColor","Cyan") // EJsS HtmlView.HtmlView Page: setting property 'LevelColor' for element 'hydrogen_tank'
+      .setProperty("SizeX",0.8) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'hydrogen_tank'
+      .setProperty("X",-1.8) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'hydrogen_tank'
+      .setProperty("Y",4) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'hydrogen_tank'
+      .setProperty("SizeY",5) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'hydrogen_tank'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.text,"H2", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'H2'
+      .setProperty("RelativePosition","SOUTH") // EJsS HtmlView.HtmlView Page: setting property 'RelativePosition' for element 'H2'
+      .setProperty("X",-1.8) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'H2'
+      .setProperty("Y",6.6) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'H2'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.tank,"oxygen_tank", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'oxygen_tank'
+      .setProperty("LevelColor","Magenta") // EJsS HtmlView.HtmlView Page: setting property 'LevelColor' for element 'oxygen_tank'
+      .setProperty("SizeX",0.8) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'oxygen_tank'
+      .setProperty("X",1.8) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'oxygen_tank'
+      .setProperty("Y",4) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'oxygen_tank'
+      .setProperty("SizeY",5) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'oxygen_tank'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.text,"O2", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'O2'
+      .setProperty("RelativePosition","SOUTH") // EJsS HtmlView.HtmlView Page: setting property 'RelativePosition' for element 'O2'
+      .setProperty("X",1.8) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'O2'
+      .setProperty("Y",6.6) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'O2'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.group,"cathode", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'cathode'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"electrode_12", _view.cathode) // EJsS HtmlView.HtmlView Page: declaration of element 'electrode_12'
+      .setProperty("FillColor","Yellow") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'electrode_12'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'electrode_12'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"electrode_1", _view.cathode) // EJsS HtmlView.HtmlView Page: declaration of element 'electrode_1'
+      .setProperty("FillColor","url(#mygrandient)") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'electrode_1'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'electrode_1'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.text,"electrode_1_text", _view.cathode) // EJsS HtmlView.HtmlView Page: declaration of element 'electrode_1_text'
+      .setProperty("X",-1.75) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'electrode_1_text'
+      .setProperty("Y",1) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'electrode_1_text'
+      .setProperty("Text","cathode") // EJsS HtmlView.HtmlView Page: setting property 'Text' for element 'electrode_1_text'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.group,"anode", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'anode'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"electrode_22", _view.anode) // EJsS HtmlView.HtmlView Page: declaration of element 'electrode_22'
+      .setProperty("FillColor","Yellow") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'electrode_22'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'electrode_22'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"electrode_2", _view.anode) // EJsS HtmlView.HtmlView Page: declaration of element 'electrode_2'
+      .setProperty("FillColor","url(#mygrandient)") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'electrode_2'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'electrode_2'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shapeSet,"particlesEclectrons", _view.anode) // EJsS HtmlView.HtmlView Page: declaration of element 'particlesEclectrons'
+      .setProperty("FillColor","Yellow") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'particlesEclectrons'
+      .setProperty("SizeX",5) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'particlesEclectrons'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'particlesEclectrons'
+      .setProperty("SizeY",5) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'particlesEclectrons'
+      .setProperty("PixelSize",true) // EJsS HtmlView.HtmlView Page: setting property 'PixelSize' for element 'particlesEclectrons'
+      .setProperty("LineWidth",0) // EJsS HtmlView.HtmlView Page: setting property 'LineWidth' for element 'particlesEclectrons'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.text,"electrode_2_text", _view.anode) // EJsS HtmlView.HtmlView Page: declaration of element 'electrode_2_text'
+      .setProperty("X",1.8) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'electrode_2_text'
+      .setProperty("Y",1) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'electrode_2_text'
+      .setProperty("Text","anode") // EJsS HtmlView.HtmlView Page: setting property 'Text' for element 'electrode_2_text'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"wire_left_1", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'wire_left_1'
+      .setProperty("FillColor","Black") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'wire_left_1'
+      .setProperty("SizeX",1.25) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'wire_left_1'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'wire_left_1'
+      .setProperty("X",-1.1) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'wire_left_1'
+      .setProperty("Y",-3.5) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'wire_left_1'
+      .setProperty("SizeY",0.1) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'wire_left_1'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"wire_left_2", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'wire_left_2'
+      .setProperty("FillColor","Black") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'wire_left_2'
+      .setProperty("SizeX",0.05) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'wire_left_2'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'wire_left_2'
+      .setProperty("X",-1.7) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'wire_left_2'
+      .setProperty("Y",-2) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'wire_left_2'
+      .setProperty("SizeY",3) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'wire_left_2'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"wire_right_1", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'wire_right_1'
+      .setProperty("FillColor","Black") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'wire_right_1'
+      .setProperty("SizeX",1.25) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'wire_right_1'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'wire_right_1'
+      .setProperty("X",1.1) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'wire_right_1'
+      .setProperty("Y",-3.5) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'wire_right_1'
+      .setProperty("SizeY",0.1) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'wire_right_1'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"wire_right_2", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'wire_right_2'
+      .setProperty("FillColor","Black") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'wire_right_2'
+      .setProperty("SizeX",0.05) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'wire_right_2'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'wire_right_2'
+      .setProperty("X",1.7) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'wire_right_2'
+      .setProperty("Y",-2) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'wire_right_2'
+      .setProperty("SizeY",3) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'wire_right_2'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.group,"battery2", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'battery2'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shape,"battery", _view.battery2) // EJsS HtmlView.HtmlView Page: declaration of element 'battery'
+      .setProperty("FillColor","Green") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'battery'
+      .setProperty("SizeX",1) // EJsS HtmlView.HtmlView Page: setting property 'SizeX' for element 'battery'
+      .setProperty("ShapeType","RECTANGLE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'battery'
+      .setProperty("X",0) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'battery'
+      .setProperty("Y",-3.5) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'battery'
+      .setProperty("SizeY",1) // EJsS HtmlView.HtmlView Page: setting property 'SizeY' for element 'battery'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.text,"batteryunicode", _view.battery2) // EJsS HtmlView.HtmlView Page: declaration of element 'batteryunicode'
+      .setProperty("X",0) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'batteryunicode'
+      .setProperty("Y",-3.5) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'batteryunicode'
+      .setProperty("Text","🔋") // EJsS HtmlView.HtmlView Page: setting property 'Text' for element 'batteryunicode'
+      .setProperty("Font","normal normal 7vw ") // EJsS HtmlView.HtmlView Page: setting property 'Font' for element 'batteryunicode'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.text,"battery_text", _view.battery2) // EJsS HtmlView.HtmlView Page: declaration of element 'battery_text'
+      .setProperty("X",0) // EJsS HtmlView.HtmlView Page: setting property 'X' for element 'battery_text'
+      .setProperty("Y",-3) // EJsS HtmlView.HtmlView Page: setting property 'Y' for element 'battery_text'
+      .setProperty("Text","- battery +") // EJsS HtmlView.HtmlView Page: setting property 'Text' for element 'battery_text'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shapeSet,"bubble_right", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'bubble_right'
+      .setProperty("FillColor","Magenta") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'bubble_right'
+      .setProperty("ShapeType","ELLIPSE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'bubble_right'
+      .setProperty("LineColor","Magenta") // EJsS HtmlView.HtmlView Page: setting property 'LineColor' for element 'bubble_right'
+      .setProperty("LineWidth",3) // EJsS HtmlView.HtmlView Page: setting property 'LineWidth' for element 'bubble_right'
+      ;
+
+    _view._addElement(EJSS_DRAWING2D.shapeSet,"bubble_left", _view.plottingPanel) // EJsS HtmlView.HtmlView Page: declaration of element 'bubble_left'
+      .setProperty("FillColor","Cyan") // EJsS HtmlView.HtmlView Page: setting property 'FillColor' for element 'bubble_left'
+      .setProperty("ShapeType","ELLIPSE") // EJsS HtmlView.HtmlView Page: setting property 'ShapeType' for element 'bubble_left'
+      .setProperty("LineColor","Cyan") // EJsS HtmlView.HtmlView Page: setting property 'LineColor' for element 'bubble_left'
+      .setProperty("LineWidth",3) // EJsS HtmlView.HtmlView Page: setting property 'LineWidth' for element 'bubble_left'
+      ;
+
+  };
+
+  return _view;
+}
+
+
+//--><!]]></script>
+  </head>
+  <body>
+    <div role="button" id="_topFrame" style="text-align:center"></div>
+  <div id="metadata" class="metadata">
+    <br />
+    <div id="title_author">
+      <hr />
+      <b>Title and author:</b>
+      <p>
+      Electrolysis of Water with Visualisation of ions movement<br />
+     <img alt="Logo" src="ElectrolysisofWaterVirtualLab/Screen Shot 2018-11-13 at 9.23.21 AM (2).png" />
+      </p>
+      <p>
+ Juan Borrero Mendoze; Leow Guan Sin; Loo Kang Wee
+      </p>
+    </div>
+    <hr />
+    <p></p>
+    <div id="copyright_message">
+      <div class="cc_left"  style="float:left">&#169; 2024, Juan Borrero Mendoze; Leow Guan Sin; Loo Kang Wee. Compiled with EJS 6.02_BETA (201222)
+</div>
+      <div class="cc_right" style="float:right">    Released under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US"> <img alt="Creative Commons Attribution-NonCommercial-ShareAlike" src="_ejs_library/images/cc_icon.png" /> </a> license.</div>
+    </div>
+  </div>
+    <script type="text/javascript"><!--//--><![CDATA[//><!--
+      var _model;
+      var _scorm;
+      window.addEventListener('load',
+        function () { 
+          _model =  new ElectrolysisofWaterVirtualLabv4("_topFrame","_ejs_library/",null);
+          if (typeof _isApp !== "undefined" && _isApp) _model.setRunAlways(true);
+          TextResizeDetector.TARGET_ELEMENT_ID = '_topFrame';
+          TextResizeDetector.USER_INIT_FUNC = function () {
+            var iBase = TextResizeDetector.addEventListener(function(e,args) {
+              _model._fontResized(args[0].iBase,args[0].iSize,args[0].iDelta);
+              },null);
+            _model._fontResized(iBase);
+          };
+          _model.onload();
+        }, false);
+    //--><!]]></script>
+  </body>
+</html>
